@@ -40,14 +40,14 @@ gem 'spring',        group: :development
 
 group :test do
  #gem 'rspec-rails'
-  gem 'cucumber-rails'    #, :require => false
-  gem 'database_cleaner'
+  gem 'cucumber-rails', '~> 1.4.1'    #, :require => false
+  gem 'database_cleaner', '~> 1.3.0'
   #gem 'factory_girl_rails'
 end
 
 group :test, :development do
-  gem 'rspec-rails'
-  gem 'shoulda-matchers'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'shoulda-matchers', '~> 2.6.1'
+  gem 'factory_girl_rails', '~> 4.4.1'
 end
 
