@@ -40,7 +40,7 @@ gem 'spring',        group: :development
 
 group :test do
  #gem 'rspec-rails'
-  gem 'cucumber-rails', '~> 1.4.1'    #, :require => false
+  gem 'cucumber-rails', '~> 1.4.1' , :require => false
   gem 'database_cleaner', '~> 1.3.0'
   #gem 'factory_girl_rails'
 end
