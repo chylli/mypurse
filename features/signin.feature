@@ -9,7 +9,6 @@ Feature: User Signin Flow
     When I signin with user1's email and user1's password
     Then it will display 'Welcome to mypurse, user1'
 
-  @wip
   Scenario: signin failed
     Given a user named user1
     And a user named user2
