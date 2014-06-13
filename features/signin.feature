@@ -13,4 +13,4 @@ Feature: User Signin Flow
     Given a user named user1
     And a user named user2
     When I signin with user1's email and user2's password
-    Then it will display 'Invalid user/password combination'
+    Then it will display 'Invalid email/password combination'

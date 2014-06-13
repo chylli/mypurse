@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     delete 'signout' => :destroy
   end
 
-  resources :users
+  resource :user
+
+  get 'signup' => 'users#new'
 
   root 'users#new'
   # The priority is based upon order of creation: first created -> highest priority.
