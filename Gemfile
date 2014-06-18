@@ -1,10 +1,8 @@
-source 'https://rubygems.org'
-
+source 'https://ruby.taobao.org/'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.1'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -49,5 +47,10 @@ group :test, :development do
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', '~> 2.6.1'
   gem 'factory_girl_rails', '~> 4.4.1'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 end
 
+group :production do
+  gem 'pg'
+end
