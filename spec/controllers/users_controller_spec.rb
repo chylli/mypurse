@@ -56,7 +56,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "GET edit" do
     it "assigns the requested user as @user" do
       get :edit, {}, valid_session
-      expect(assigns(:user)).to eq(user)
+      expect(assigns(:new_user)).to eq(user)
     end
   end
 
@@ -70,8 +70,8 @@ RSpec.describe UsersController, :type => :controller do
 
       it "assigns a newly created user as @user" do
         post :create, {:user => valid_attributes}, valid_session
-        expect(assigns(:user)).to be_a(User)
-        expect(assigns(:user)).to be_persisted
+        expect(assigns(:new_user)).to be_a(User)
+        expect(assigns(:new_user)).to be_persisted
       end
 
       it "redirects to the created user" do
@@ -107,7 +107,7 @@ RSpec.describe UsersController, :type => :controller do
 
       it "assigns the requested user as @user" do
         put :update, {:user => valid_attributes}, valid_session
-        expect(assigns(:user)).to eq(user)
+        expect(assigns(:new_user)).to eq(user)
       end
 
       it "redirects to the user" do
@@ -119,7 +119,7 @@ RSpec.describe UsersController, :type => :controller do
     describe "with invalid params" do
       it "assigns the user as @user" do
         put :update, {:user => invalid_attributes}, valid_session
-        expect(assigns(:user)).to eq(user)
+        expect(assigns(:new_user)).to eq(user)
       end
 
       it "re-renders the 'edit' template" do
