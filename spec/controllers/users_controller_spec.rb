@@ -49,7 +49,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "GET new" do
     it "assigns a new user as @user" do
       get :new, {}, valid_session
-      expect(assigns(:user)).to be_a_new(User)
+      expect(assigns(:new_user)).to be_a_new(User)
     end
   end
 
@@ -83,7 +83,7 @@ RSpec.describe UsersController, :type => :controller do
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
         post :create, {:user => invalid_attributes}, valid_session
-        expect(assigns(:user)).to be_a_new(User)
+        expect(assigns(:new_user)).to be_a_new(User)
       end
 
       it "re-renders the 'new' template" do

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    @new_user = User.new
   end
 
   # GET /users/1/edit
@@ -24,15 +24,15 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    @new_user = User.new(user_params)
 
     respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+      if @new_user.save
+        format.html { redirect_to @new_user, notice: 'User was successfully created.' }
+        format.json { render :show, status: :created, location: @new_user }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @new_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -40,13 +40,14 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @new_user = @user
     respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if @new_user.update(user_params)
+        format.html { redirect_to @new_user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @new_user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @new_user.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -14,3 +14,11 @@ Feature: User Signin Flow
     And a user named user2
     When I signin with user1's email and user2's password
     Then it will display 'Invalid email/password combination'
+
+  @wip
+  Scenario: username displayed when signed in
+    When I signed in with a valid user
+    And I visit the root page
+    Then it will display that user's name
+
+

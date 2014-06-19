@@ -11,3 +11,12 @@ When(/^I signin with (\w+)'s email and (\w+)'s password$/) do |username1, userna
   click_button "Signin"
 end
 
+When(/^I signed in with a valid user$/) do
+  step "a user named user1"
+  step "I signin with user1's email and user1's password"
+end
+
+Then(/^it will display that user's name$/) do
+  step "it will display 'user1'"
+end
+
