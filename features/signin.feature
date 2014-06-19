@@ -15,10 +15,17 @@ Feature: User Signin Flow
     When I signin with user1's email and user2's password
     Then it will display 'Invalid email/password combination'
 
-  @wip
   Scenario: username displayed when signed in
     When I signed in with a valid user
     And I visit the root page
     Then it will display that user's name
 
+  Scenario: update user information need authentication again
+    When I signed in with a valid user
+    And I visit the edit user page
+    And I click the 'Update' button
+    Then it will display 'Current password is invalid'
+    When I filled the 'Current password' with correct password
+    And I click the 'Update' button
+    Then it will display 'User was successfully updated'
 

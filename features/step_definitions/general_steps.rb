@@ -17,3 +17,7 @@ end
 When(/^I visit (.*)$/) do |page_name|
   visit path_to(page_name)
 end
+
+When(/^I click the '(.*)' button$/) do |button_name|
+  click_button button_name
+end

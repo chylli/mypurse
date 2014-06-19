@@ -20,3 +20,8 @@ Then(/^it will display that user's name$/) do
   step "it will display 'user1'"
 end
 
+When(/^I filled the 'Current password' with correct password$/) do
+  user = build(:user1)
+  fill_in "Current password", with: user.password
+end
+

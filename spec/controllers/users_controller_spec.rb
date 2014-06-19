@@ -96,7 +96,7 @@ RSpec.describe UsersController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        {:name => 'name2'}
+        {name: "name2", current_password: user.password }
       }
 
       it "updates the requested user" do
@@ -106,12 +106,12 @@ RSpec.describe UsersController, :type => :controller do
       end
 
       it "assigns the requested user as @user" do
-        put :update, {:user => valid_attributes}, valid_session
+        put :update, {:user => new_attributes}, valid_session
         expect(assigns(:new_user)).to eq(user)
       end
 
       it "redirects to the user" do
-        put :update, {:user => valid_attributes}, valid_session
+        put :update, {:user => new_attributes}, valid_session
         expect(response).to redirect_to(user)
       end
     end

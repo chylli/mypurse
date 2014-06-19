@@ -10,6 +10,15 @@
       </ul>
     </div>
   <% end %>
+  
+	<% if params[:action] == "edit" || params[:action] == "update"%>
+	
+	<div class="field">
+		<%= f.label :current_password %>
+		<%= f.password_field :current_password %>
+	</div>
+
+	<% end%>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -28,6 +37,10 @@
     <%= f.password_field :password_confirmation %>
   </div>
   <div class="actions">
-    <%= f.submit value: "Signup" %>
+    <% if params[:action] == "edit" || params[:action] == "update"%>
+      <%= f.submit value: "Update" %>
+		<% else %>
+	  	<%= f.submit value: "Signup" %>
+		<% end %>
   </div>
 <% end %>
