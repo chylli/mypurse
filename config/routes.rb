@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :accounts
+
+  resources :account_categories
+
+  resources :account_types
+
   controller :sessions do
     get 'signin' => :new
     post 'signin' => :create

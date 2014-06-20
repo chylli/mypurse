@@ -136,7 +136,6 @@ RSpec.describe UsersController, :type => :controller do
       expect {
         delete :destroy, {}, valid_session
       }.to change(User, :count).by(-1)
-      puts User.count
     end
 
     it "redirects to the root" do
