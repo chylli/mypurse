@@ -7,4 +7,5 @@ class User < ActiveRecord::Base
   has_many :types, class_name: "AccountType",  dependent: :destroy
   has_many :categories, class_name: "AccountCategory",  dependent: :destroy
   has_many :accounts, dependent: :destroy
+  has_many :transactions, dependent: :destroy
 end

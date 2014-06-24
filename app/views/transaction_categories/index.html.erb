@@ -1,0 +1,31 @@
+<h1>Listing transaction_categories</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Parent</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @transaction_categories.each do |transaction_category| %>
+      <tr>
+        <td><%= transaction_category.user %></td>
+        <td><%= transaction_category.name %></td>
+        <td><%= transaction_category.description %></td>
+        <td><%= transaction_category.parent_id %></td>
+        <td><%= link_to 'Show', transaction_category %></td>
+        <td><%= link_to 'Edit', edit_transaction_category_path(transaction_category) %></td>
+        <td><%= link_to 'Destroy', transaction_category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Transaction category', new_transaction_category_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @transaction_category.user %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @transaction_category.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @transaction_category.description %>
+</p>
+
+<p>
+  <strong>Parent:</strong>
+  <%= @transaction_category.parent_id %>
+</p>
+
+<%= link_to 'Edit', edit_transaction_category_path(@transaction_category) %> |
+<%= link_to 'Back', transaction_categories_path %>

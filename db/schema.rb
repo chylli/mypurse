@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140620152759) do
+ActiveRecord::Schema.define(version: 20140624035758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20140620152759) do
     t.integer  "user_id"
     t.integer  "type_id"
     t.integer  "currency_id"
-    t.decimal  "balance",     precision: 15, scale: 2
+    t.decimal  "balance",     precision: 15, scale: 2, default: 0.0, null: false
     t.boolean  "hidden"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -59,6 +59,25 @@ ActiveRecord::Schema.define(version: 20140620152759) do
     t.string   "name",       limit: 20
     t.string   "abbr",       limit: 10
     t.string   "symbol",     limit: 6
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transaction_categories", force: true do |t|
+    t.integer  "user_id",                null: false
+    t.string   "name",        limit: 32, null: false
+    t.string   "description"
+    t.integer  "parent_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.integer  "user_id",                                            null: false
+    t.integer  "category_id",                                        null: false
+    t.integer  "debit_id",                                           null: false
+    t.integer  "credit_id",                                          null: false
+    t.decimal  "amount",      precision: 15, scale: 2, default: 0.0, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

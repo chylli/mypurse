@@ -7,7 +7,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.integer :user_id
       t.integer :type_id
       t.integer :currency_id
-      t.decimal :balance, precision: 15, scale: 2
+      t.decimal :balance, precision: 15, scale: 2, null: false, default: 0.00
       t.boolean :hidden
       t.timestamps
     end

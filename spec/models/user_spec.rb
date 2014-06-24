@@ -10,4 +10,5 @@ RSpec.describe User, :type => :model do
   it { should have_many(:types).class_name("AccountType").dependent(:destroy) }
   it { should have_many(:categories).class_name("AccountCategory").dependent(:destroy) }
   it { should have_many(:accounts).dependent(:destroy) }
+  it { should have_many(:transactions).dependent(:destroy)} 
 end

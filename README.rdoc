@@ -27,5 +27,9 @@ Things you may want to cover:
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
 
+* db scheme
+** account_category transaction_category are tree
+** account_type is not a tree
+
 * TODO
 ** refactor scheme , like name length
