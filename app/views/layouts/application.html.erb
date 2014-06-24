@@ -17,17 +17,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Mypurse</a>
+					<%= link_to "Mypurse", root_path, class: "navbar-brand"%>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
 					<ul class="nav navbar-nav navbar-right">
 						<% if @user %>
-						<li><%= link_to @user.name, "#" %></li>
+						<li><%= link_to @user.name, user_path %></li>
 						<li><%= link_to "Signout", signout_path, method: :delete %></li>
 						<% else %>
 						<li><%= link_to "Signin", signin_path %></li>
