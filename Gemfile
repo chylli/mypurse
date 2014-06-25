@@ -56,3 +56,5 @@ end
 group :production do
   gem 'pg'
 end
+
+gem 'http_accept_language'
