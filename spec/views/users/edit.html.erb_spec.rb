@@ -17,7 +17,7 @@ RSpec.describe "users/edit", :type => :view do
 
       assert_select "input#user_name[name=?]", "user[name]"
 
-      assert_select "textarea#user_email[name=?]", "user[email]"
+      assert_select "input#user_email[name=?]", "user[email]"
 
       assert_select "input#user_password[name=?]", "user[password]"
     end

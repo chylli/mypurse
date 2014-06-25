@@ -25,7 +25,14 @@ Feature: User Signin Flow
     And I visit the edit user page
     And I click the 'Update' button
     Then it will display 'Current password is invalid'
-    When I filled the 'Current password' with correct password
+    When I filled the 'Current Password' with correct password
     And I click the 'Update' button
     Then it will display 'User was successfully updated'
 
+  Scenario: update user language will change the shown language
+    When I signed in with a valid user
+    And I visit the edit user page
+    When I filled the 'Current Password' with correct password
+    And I filled the 'Preferred Language' with 'zh'
+    And I click the 'Update' button
+    Then it will display '关于'

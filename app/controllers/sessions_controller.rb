@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_url, alert: "Welcome to mypurse, " + user.name
     else
-      redirect_to signin_url, alert: "Invalid email/password combination"
+      redirect_to signin_url, flash: {signin_error: t("Invalid email/password combination")}
     end
   end
 

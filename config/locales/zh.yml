@@ -1,2 +1,23 @@
 zh:
   hello: "你好"
+  About: "关于"
+  Contact: "联系我们"
+  Signout: "退出"
+  Signin: "登录"
+  Signup: "注册"
+  Please Sign In: "请登录"
+  password: 密码
+  Email address: 电子信箱
+  Invalid email/password combination: 邮箱或密码错误
+  Update: 更新
+  Update Profile: 更新个人信息
+  Current Password: 当前密码
+  Name: Name
+  Email: 电子信箱
+  Password: 密码
+  Password Confirmation: 重复密码
+  Preferred Language: 语言偏好
+  "User was successfully updated": 更新成功
+
+
+

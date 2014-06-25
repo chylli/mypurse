@@ -21,3 +21,21 @@
 
 en:
   hello: "Hello world"
+  About: About
+  Contact: Contact
+  Signout: Singout
+  Signin: Signin
+  Signup: Signup
+  Please Sign In: Please Sign In
+  password: password
+  Email address: Email Address
+  Invalid email/password combination: Invalid email/password combination
+  Update: Update
+  Update Profile: Update Profile
+  Current Password: Current Password
+  Name: Name
+  Email: Email
+  Password: Password
+  Password Confirmation: Password Confirmation
+  Preferred Language: Preferred Language
+  "User was successfully updated": User was successfully updated

@@ -21,16 +21,16 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><%= link_to t("About"), "#about" %></li>
+            <li><%= link_to t("Contact"), "#contact" %></li>
           </ul>
 					<ul class="nav navbar-nav navbar-right">
 						<% if @user %>
 						<li><%= link_to @user.name, user_path %></li>
-						<li><%= link_to "Signout", signout_path, method: :delete %></li>
+						<li><%= link_to t("Signout"), signout_path, method: :delete %></li>
 						<% else %>
-						<li><%= link_to "Signin", signin_path %></li>
-						<li><%= link_to "Signup", signup_path %></li>
+						<li><%= link_to t("Signin"), signin_path %></li>
+						<li><%= link_to t("Signup"), signup_path %></li>
 						<% end %>
 					</ul>
         </div><!--/.nav-collapse -->
@@ -39,7 +39,7 @@
 
     <div class="container">
 			<% if flash[:alert] %>
-			<p id="notice"><%= flash[:alert] %></p>
+			<h2 id="notice"><%= flash[:alert] %></h2>
 			<% end %>
 			<%= yield %>
 
