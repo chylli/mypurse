@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :before_auth_set_locale, :set_user, :authorize, :after_auth_set_locale
+  before_action :before_auth_set_locale, :set_user, :authorize, :after_auth_set_locale, :set_layout
 
   protected
 
@@ -30,4 +30,12 @@ class ApplicationController < ActionController::Base
       end
     end
 
+
+    def set_layout
+      controllers_without_left_column = %w(users sessions)
+      @has_left_column = true
+      if controllers_without_left_column.include?(controller_name)
+        @has_left_column = false
+      end
+    end
 end

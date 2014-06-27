@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'configure/index'
+
   resources :transactions
 
   resources :transaction_categories
