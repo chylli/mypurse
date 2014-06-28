@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @transaction.user_id
+%p
+  %strong Category:
+  = @transaction.category_id
+%p
+  %strong Debit:
+  = @transaction.debit_id
+%p
+  %strong Credit:
+  = @transaction.credit_id
+%p
+  %strong Amount:
+  = @transaction.amount
+= link_to 'Edit', edit_transaction_path(@transaction)
+|
+\#{link_to 'Back', transactions_path}

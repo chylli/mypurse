@@ -1,0 +1,19 @@
+= form_for(@account_type) do |f|
+  - if @account_type.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@account_type.errors.count, "error")
+        prohibited this account_type from being saved:
+      %ul
+        - @account_type.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :name
+    %br/
+    = f.text_field :name
+  .field
+    = f.label :description
+    %br/
+    = f.text_field :description
+  .actions
+    = f.submit

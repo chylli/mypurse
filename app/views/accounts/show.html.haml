@@ -1,0 +1,22 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @account.user_id
+%p
+  %strong Name:
+  = @account.name
+%p
+  %strong Description:
+  = @account.description
+%p
+  %strong Category:
+  = @account.category_id
+%p
+  %strong Type:
+  = @account.type_id
+%p
+  %strong Balance:
+  = @account.balance
+= link_to 'Edit', edit_account_path(@account)
+|
+\#{link_to 'Back', accounts_path}

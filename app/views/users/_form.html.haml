@@ -1,0 +1,37 @@
+= form_for(@new_user, url: user_path, html: {class: "form-sign"}) do |f|
+  %h2.form-sign-heading= heading
+  - if @new_user.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@new_user.errors.count, "error")
+        prohibited this user from being saved:
+      %ul
+        - @new_user.errors.full_messages.each do |message|
+          %li= message
+  - if params[:action] == "edit" || params[:action] == "update"
+    .field
+      %label{:for => "user_current_password"}= t "Current Password"
+      %br/
+      = f.password_field :current_password
+  .field
+    %label{:for => "user_name"}= t "Name"
+    %br/
+    = f.text_field :name
+  .field
+    %label{:for => "user_email"}= t "Email"
+    %br/
+    = f.email_field :email
+  .field
+    %label{:for => "user_password"}= t "Password"
+    %br/
+    = f.password_field :password
+  %div
+    %label{:for => "user_password_confirmation"}= t "Password Confirmation"
+    %br/
+    = f.password_field :password_confirmation
+  .field
+    %label{:for => "user_language"}= t "Preferred Language"
+    %br/
+    = f.select :language, (User.available_languages.map {|a| [a,a]}).unshift(["Unset",""])
+  .actions
+    = f.submit value: submit_value

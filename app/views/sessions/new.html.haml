@@ -1,0 +1,7 @@
+= form_tag({},{class: "form-sign"}) do
+  - if flash[:signin_error]
+    %h3#error_explanation= flash[:signin_error]
+  %h2.form-sign-heading= t "Please Sign In"
+  = email_field_tag :email, params[:email], class: "form-control", placeholder: t("Email address"), required: "true", autofocus: "true"
+  = password_field_tag :password, params[:password], class: "form-control", placeholder: t("password"), required: "true"
+  = button_tag t("Signin"), class: "btn btn-lg btn-primary btn-block"

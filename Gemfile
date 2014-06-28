@@ -38,6 +38,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# Use haml as template engine
+gem 'haml-rails'
+
 group :test do
  #gem 'rspec-rails'
   gem 'cucumber-rails', '~> 1.4.1' , :require => false

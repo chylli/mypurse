@@ -1,0 +1,16 @@
+%p#notice= notice
+%p
+  %strong User:
+  = @account_category.user_id
+%p
+  %strong Name:
+  = @account_category.name
+%p
+  %strong Description:
+  = @account_category.description
+%p
+  %strong Parent:
+  = @account_category.parent_id
+= link_to 'Edit', edit_account_category_path(@account_category)
+|
+\#{link_to 'Back', account_categories_path}

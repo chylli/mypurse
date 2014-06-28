@@ -1,0 +1,25 @@
+%h1 Listing accounts
+%table
+  %thead
+    %tr
+      %th User
+      %th Name
+      %th Description
+      %th Category
+      %th Type
+      %th Balance
+      %th{:colspan => "3"}
+  %tbody
+    - @accounts.each do |account|
+      %tr
+        %td= account.user_id
+        %td= account.name
+        %td= account.description
+        %td= account.category_id
+        %td= account.type_id
+        %td= account.balance
+        %td= link_to 'Show', account
+        %td= link_to 'Edit', edit_account_path(account)
+        %td= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Account', new_account_path
