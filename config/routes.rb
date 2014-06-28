@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'configure/index'
+  get 'configure/language'
 
   resources :transactions
 

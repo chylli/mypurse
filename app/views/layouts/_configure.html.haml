@@ -1,8 +1,8 @@
 .row
   .col-sm-3.col-md-2.sidebar
     %ul.nav.nav-sidebar
-      %li.active
-        %a{:href => "#"} Overview
+      %li{ class: action_name == 'language' ? "active" : ""}
+        %a{:href => "#"}= t("Language")
       %li
         %a{:href => "#"} Reports
       %li

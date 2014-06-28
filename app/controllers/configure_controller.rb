@@ -1,4 +1,4 @@
 class ConfigureController < ApplicationController
-  def index
+  def language
   end
 end
