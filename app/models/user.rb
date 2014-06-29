@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   validates :password, length: {within: 6..20, message: "should be 6 to 20 characters", on: :create}
   validates :language, inclusion: {within: available_languages, allow_blank: true, allow_nil: true}
   has_secure_password
-  has_many :types, class_name: "AccountType",  dependent: :destroy
-  has_many :categories, class_name: "AccountCategory",  dependent: :destroy
+  has_many :account_types,  dependent: :destroy
+  has_many :account_categories, dependent: :destroy
   has_many :accounts, dependent: :destroy
   has_many :transactions, dependent: :destroy
 end
