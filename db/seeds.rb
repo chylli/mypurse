@@ -7,5 +7,5 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Currency.create([{ name: '人民币', abbr: 'RMB', symbol: '￥' },{ name: '美元', abbr: 'USD', symbol: '$'}])
+#Currency.create([{ name: '人民币', abbr: 'RMB', symbol: '￥' },{ name: '美元', abbr: 'USD', symbol: '$'}])
 

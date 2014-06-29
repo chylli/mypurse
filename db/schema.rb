@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625030306) do
+ActiveRecord::Schema.define(version: 20140629052602) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,10 @@ ActiveRecord::Schema.define(version: 20140625030306) do
     t.string   "symbol",     limit: 6
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id",               null: false
   end
+
+  add_index "currencies", ["user_id"], name: "index_currencies_on_user_id", using: :btree
 
   create_table "transaction_categories", force: true do |t|
     t.integer  "user_id",                null: false

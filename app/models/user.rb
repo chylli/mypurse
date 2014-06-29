@@ -12,4 +12,5 @@ class User < ActiveRecord::Base
   has_many :account_categories, dependent: :destroy
   has_many :accounts, dependent: :destroy
   has_many :transactions, dependent: :destroy
+  has_many :currencies, dependent: :destroy
 end
