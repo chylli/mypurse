@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629052602) do
+ActiveRecord::Schema.define(version: 20140629061351) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 20140629052602) do
 
   create_table "currencies", force: true do |t|
     t.string   "name",       limit: 20
-    t.string   "abbr",       limit: 10
     t.string   "symbol",     limit: 6
     t.datetime "created_at"
     t.datetime "updated_at"

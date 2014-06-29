@@ -13,4 +13,15 @@ class User < ActiveRecord::Base
   has_many :accounts, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :currencies, dependent: :destroy
+
+
+  after_create :setup_relative_objects
+
+  private
+
+  def setup_relative_objects
+
+
+  end
+
 end
