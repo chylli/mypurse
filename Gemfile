@@ -43,8 +43,6 @@ gem 'haml-rails'
 
 group :test do
  #gem 'rspec-rails'
-  gem 'cucumber-rails', '~> 1.4.1' , :require => false
-  gem 'database_cleaner', '~> 1.3.0'
   #gem 'factory_girl_rails'
 end
 
@@ -54,6 +52,9 @@ group :test, :development do
   gem 'factory_girl_rails', '~> 4.4.1'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'selenium-webdriver'
+  gem 'cucumber-rails', '~> 1.4.1' , :require => false
+  gem 'database_cleaner', '~> 1.3.0'
 end
 
 group :production do

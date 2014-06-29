@@ -15,5 +15,15 @@ RSpec.describe ConfigureController, :type => :controller do
     end
   end
 
+  describe "PUT update_language" do
+    describe "with valid params" do
+      it "update the update_language" do
+        xhr :put, :update_language, {user: {language: "zh"}}, valid_session
+        expect(assigns(:user).language).to eq("zh")
+        expect(response).to be_success
+      end
+    end
+
+  end
 
 end

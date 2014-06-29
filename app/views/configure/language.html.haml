@@ -1,2 +1,11 @@
-%h1 Configure#index
-%p Find me in app/views/configure/index.html.erb
+%h1.page-header
+  = t("Preferred Language")
+
+= form_for(@user, url: configure_update_language_path, remote: true) do |f|
+  .field
+    %label{:for => "user_language"}= t "Preferred Language"
+    %br/
+    = f.select :language, (User.available_languages.map {|a| [a,a]}).unshift(["Unset",""])
+  .actions
+    = f.submit value: t('Update')
+

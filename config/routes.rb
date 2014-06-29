@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+
   get 'configure/language'
+  patch 'configure/update_language'
 
   resources :transactions
 
