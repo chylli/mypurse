@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
   def self.available_languages
     I18n.available_locales.map(&:to_s)
@@ -20,8 +21,8 @@ class User < ActiveRecord::Base
   private
 
   def setup_relative_objects
-
-
+    self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
+    self.currencies.create(name: 'USD', symbol: '$', type: 'system')
   end
 
 end

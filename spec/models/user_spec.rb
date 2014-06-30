@@ -16,4 +16,11 @@ RSpec.describe User, :type => :model do
   it " available_locales have right value" do
     expect(User.available_languages).to eq(%w{en zh})
   end
+  
+  it "should crate currencies object after create self" do
+    user1 = create(:user1)
+    expect(user1.currencies.size).to eq(2)
+  end
+  
+
 end
