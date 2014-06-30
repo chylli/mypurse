@@ -7,7 +7,7 @@ RSpec.describe "accounts/show", :type => :view do
       :name => "Name",
       :description => "Description",
       :category_id => "Category",
-      :type_id => 2,
+      :type => "Account",
       :balance => "9.99"
     ))
   end
@@ -18,7 +18,7 @@ RSpec.describe "accounts/show", :type => :view do
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Description/)
     expect(rendered).to match(/Category/)
-    expect(rendered).to match(/2/)
+    expect(rendered).to match(/Account/)
     expect(rendered).to match(/9.99/)
   end
 end

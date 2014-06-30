@@ -1,10 +1,12 @@
 class AccountsController < ApplicationController
+  before_action :set_type
+
   before_action :set_account, only: [:show, :edit, :update, :destroy]
 
   # GET /accounts
   # GET /accounts.json
   def index
-    @accounts = Account.all
+    @accounts = type_class.all
   end
 
   # GET /accounts/1
@@ -14,7 +16,7 @@ class AccountsController < ApplicationController
 
   # GET /accounts/new
   def new
-    @account = Account.new
+    @account = type_class.new
   end
 
   # GET /accounts/1/edit
@@ -24,7 +26,7 @@ class AccountsController < ApplicationController
   # POST /accounts
   # POST /accounts.json
   def create
-    @account = Account.new(account_params)
+    @account = type_class.new(account_params)
     @account.user = @user
 
     respond_to do |format|
@@ -73,4 +75,21 @@ class AccountsController < ApplicationController
     def account_params
       params.require(:account).permit(:name, :description, :category_id, :type_id, :balance)
     end
+
+
+
+    def set_type
+      @type = type
+    end
+
+    def type
+      Account.types.include?(params[:type]) ? params[:type] : "Account"
+    end
+
+    def type_class
+      type.constantize
+    end
+
+    # TODO test account sti views  carefully
+
 end

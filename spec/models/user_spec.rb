@@ -7,7 +7,6 @@ RSpec.describe User, :type => :model do
   it { should_not allow_value('asdfjkl').for(:email).on(:create) }
   it { should allow_value('1234567').for(:password).on(:create) }
   it { should_not allow_value('1234').for(:password).on(:create) }
-  it { should have_many(:account_types).dependent(:destroy) }
   it { should have_many(:account_categories).dependent(:destroy) }
   it { should have_many(:accounts).dependent(:destroy) }
   it { should have_many(:transactions).dependent(:destroy)}

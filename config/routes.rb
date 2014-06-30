@@ -8,10 +8,11 @@ Rails.application.routes.draw do
   resources :transaction_categories
 
   resources :accounts
+  
+  # for STI
+  resources :system_accounts, controller: 'accounts', type: 'SystemAccount'
 
   resources :account_categories
-
-  resources :account_types
 
   controller :sessions do
     get 'signin' => :new

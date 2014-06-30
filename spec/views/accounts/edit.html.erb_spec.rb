@@ -7,7 +7,7 @@ RSpec.describe "accounts/edit", :type => :view do
       :name => "MyString",
       :description => "MyString",
       :category_id => "MyString",
-      :type_id => 1,
+      :type => "Account",
       :balance => "9.99"
     ))
   end
@@ -23,7 +23,7 @@ RSpec.describe "accounts/edit", :type => :view do
 
       assert_select "input#account_category_id[name=?]", "account[category_id]"
 
-      assert_select "input#account_type_id[name=?]", "account[type_id]"
+      assert_select "input#account_type[name=?]", "account[type]"
 
       assert_select "input#account_balance[name=?]", "account[balance]"
     end

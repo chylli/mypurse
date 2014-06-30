@@ -8,7 +8,7 @@ RSpec.describe "accounts/index", :type => :view do
         :name => "Name1",
         :description => "Description",
         :category_id => "Category",
-        :type_id => 2,
+        :type => 'SystemAccount',
         :balance => "9.99"
       ),
       Account.create!(
@@ -16,7 +16,7 @@ RSpec.describe "accounts/index", :type => :view do
         :name => "Name2",
         :description => "Description",
         :category_id => "Category",
-        :type_id => 2,
+        :type => 'SystemAccount',
         :balance => "9.99"
       )
     ])
@@ -29,7 +29,8 @@ RSpec.describe "accounts/index", :type => :view do
     assert_select "tr>td", :text => "Name2".to_s, :count => 1
     assert_select "tr>td", :text => "Description".to_s, :count => 2
     assert_select "tr>td", :text => "Category".to_s, :count => 2
-    assert_select "tr>td", :text => 2.to_s, :count => 2
+    assert_select "tr>td", :text => "SystemAccount".to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
+    expect(response).to match(/href="\/system_accounts\/\d+\"/)
   end
 end

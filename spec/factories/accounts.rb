@@ -6,7 +6,7 @@ FactoryGirl.define do
     name "MyString"
     description "MyString"
     category_id "MyString"
-    type_id 1
+    type "SystemAccount"
     balance "9.99"
   end
 end

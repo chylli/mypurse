@@ -13,10 +13,10 @@
   = @account.category_id
 %p
   %strong Type:
-  = @account.type_id
+  = @account.type
 %p
   %strong Balance:
   = @account.balance
-= link_to 'Edit', edit_account_path(@account)
+= link_to 'Edit', sti_account_path(@account.type, @account, "edit")
 |
-\#{link_to 'Back', accounts_path}
+\#{link_to 'Back', sti_account_path(@account.type)}
