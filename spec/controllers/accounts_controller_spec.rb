@@ -28,7 +28,7 @@ RSpec.describe AccountsController, :type => :controller do
   # adjust the attributes here as well.
   # It is used to create an Account directly
   let(:valid_attributes) {
-    {user_id: user.id, name: "name"}
+    {user_id: user.id, name: "name", type: "SystemAccount"}
   }
 
   # This is used to post to create an Account
@@ -50,7 +50,7 @@ RSpec.describe AccountsController, :type => :controller do
     it "assigns all accounts as @accounts" do
       account = Account.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:accounts)).to eq([account])
+      expect(assigns(:accounts)).to include(account)
     end
   end
 
@@ -82,7 +82,8 @@ RSpec.describe AccountsController, :type => :controller do
       it "creates a new Account" do
         expect {
           post :create, {:account => valid_attributes2}, valid_session
-        }.to change(Account, :count).by(1)
+        }.to change(Account, :count).by(3)
+        #here it is 3 because the user will create 2 system accounts automatically
       end
 
       it "assigns a newly created account as @account" do

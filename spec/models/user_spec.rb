@@ -19,6 +19,7 @@ RSpec.describe User, :type => :model do
   it "should crate currencies object after create self" do
     user1 = create(:user1)
     expect(user1.currencies.size).to eq(2)
+    expect(user1.system_accounts.size).to eq(2)
   end
   
 

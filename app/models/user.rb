@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   def setup_relative_objects
     self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
+    self.system_accounts.create(name: "income", description: "total income", balance: "0.00")
+    self.system_accounts.create(name: "outcome", description: "total outcome", balance: "0.00")
   end
 
 end
