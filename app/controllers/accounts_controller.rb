@@ -83,7 +83,7 @@ class AccountsController < ApplicationController
     end
 
     def type
-      Account.types.include?(params[:type]) ? params[:type] : "Account"
+      Mypurse::Application.config.available_account_types.include?(params[:type]) ? params[:type] : "Account"
     end
 
     def type_class
