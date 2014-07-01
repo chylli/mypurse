@@ -10,16 +10,11 @@ class Account < ActiveRecord::Base
   has_many :credit_transactions, foreign_key: "credit_id", class_name: "Transaction"
 
   for t in Mypurse::Application.config.available_account_types
-    scope t.underscore.pluralize.to_sym, -> {where(type: t)}
+    lambda { |t2|
+      scope t2.underscore.pluralize.to_sym, -> {where(type: t2)}
+    }.call(t)
   end
-
-  #scope :system_accounts, -> { where(type: 'SystemAccount')}
-  #scope :cash_accounts, -> { where(type: 'CashAccount')}
-  #scope :
 
   #TODO validate default value
 
-  #def self.types
-  #  %w(SystemAccount CashAccount DemandAccount LiabilityAccount CreditCardAccount)
-  #end
 end
