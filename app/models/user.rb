@@ -14,7 +14,10 @@ class User < ActiveRecord::Base
   has_many :transactions, dependent: :destroy
   has_many :currencies, dependent: :destroy
 
-  delegate :system_accounts,  to: :accounts
+  #delegate :system_accounts, :cash_accounts, :demand_accounts, :liability_accounts, :credit_card_accounts, to: :accounts
+  for t in Mypurse::Application.config.available_account_types
+    delegate t.underscore.pluralize.to_sym, to: :accounts
+  end
 
   after_create :setup_relative_objects
 

@@ -1,0 +1,4 @@
+class CashAccount < Account
+
+end
+
