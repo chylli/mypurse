@@ -6,7 +6,6 @@ RSpec.describe "account_categories/show", :type => :view do
       :user_id => 1,
       :name => "Name",
       :description => "Description",
-      :parent_id => 2
     ))
   end
 
@@ -15,6 +14,5 @@ RSpec.describe "account_categories/show", :type => :view do
     expect(rendered).to match(/1/)
     expect(rendered).to match(/Name/)
     expect(rendered).to match(/Description/)
-    expect(rendered).to match(/2/)
   end
 end

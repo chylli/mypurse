@@ -6,7 +6,6 @@ RSpec.describe "account_categories/new", :type => :view do
       :user_id => 1,
       :name => "MyString",
       :description => "MyString",
-      :parent_id => 1
     ))
   end
 

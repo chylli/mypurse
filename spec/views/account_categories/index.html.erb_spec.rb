@@ -7,7 +7,6 @@ RSpec.describe "account_categories/index", :type => :view do
         :user_id => 1,
         :name => "Name1",
         :description => "Description",
-        :parent_id => 2
       ),
       AccountCategory.create!(
         :user_id => 1,

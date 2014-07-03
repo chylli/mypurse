@@ -6,7 +6,6 @@ RSpec.describe "account_categories/edit", :type => :view do
       :user_id => 1,
       :name => "MyString",
       :description => "MyString",
-      :parent_id => 1
     ))
   end
 
@@ -19,7 +18,6 @@ RSpec.describe "account_categories/edit", :type => :view do
 
       assert_select "input#account_category_description[name=?]", "account_category[description]"
 
-      assert_select "input#account_category_parent_id[name=?]", "account_category[parent_id]"
     end
   end
 end
