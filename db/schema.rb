@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630035248) do
+ActiveRecord::Schema.define(version: 20140703072240) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,12 +20,13 @@ ActiveRecord::Schema.define(version: 20140630035248) do
     t.integer  "user_id",                         null: false
     t.string   "name",                 limit: 32, null: false
     t.string   "description"
-    t.integer  "parent_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "default_account_type"
+    t.string   "ancestry"
   end
 
+  add_index "account_categories", ["ancestry"], name: "index_account_categories_on_ancestry", using: :btree
   add_index "account_categories", ["name"], name: "index_account_categories_on_name", unique: true, using: :btree
   add_index "account_categories", ["user_id"], name: "index_account_categories_on_user_id", using: :btree
 
