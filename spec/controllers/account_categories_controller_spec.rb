@@ -50,7 +50,7 @@ RSpec.describe AccountCategoriesController, :type => :controller do
     it "assigns all account_categories as @account_categories" do
       account_category = AccountCategory.create! valid_attributes
       get :index, {}, valid_session
-      expect(assigns(:account_categories)).to eq([account_category])
+      expect(assigns(:account_categories)).to include(account_category)
     end
   end
 
@@ -82,7 +82,7 @@ RSpec.describe AccountCategoriesController, :type => :controller do
       it "creates a new AccountCategory" do
         expect {
           post :create, {:account_category => valid_attributes2}, valid_session
-        }.to change(AccountCategory, :count).by(1)
+        }.to change(AccountCategory, :count).by(7)
       end
 
       it "assigns a newly created account_category as @account_category" do
