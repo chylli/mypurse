@@ -7,6 +7,7 @@ class AccountCategory < ActiveRecord::Base
   belongs_to :user
   has_many :accounts, foreign_key: "category_id"
 
+
   #TODO should limit the parent row to be the same user
   #TODO should validate the parent is not himself
 end

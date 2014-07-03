@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get 'configure/language'
   patch 'configure/update_language'
 
+  get 'configure/account_categories'
+
   resources :transactions
 
   resources :transaction_categories

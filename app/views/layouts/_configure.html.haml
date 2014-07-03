@@ -2,9 +2,9 @@
   .col-sm-3.col-md-2.sidebar
     %ul.nav.nav-sidebar
       %li{ class: action_name == 'language' ? "active" : ""}
-        %a{:href => "#"}= t("Language")
-      %li
-        %a{:href => "#"}= t("Account Categories")
+        %a{:href => configure_language_path}= t("Language")
+      %li{ class: action_name == 'account_categories' ? "active" : ""}
+        %a{:href => configure_account_categories_path}= t("Account Categories")
       %li
         %a{:href => "#"} Analytics
       %li

@@ -11,4 +11,9 @@ class ConfigureController < ApplicationController
     end
   end
 
+  #TODO test active class in haml
+  def account_categories
+
+  end
+
 end
