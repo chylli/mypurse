@@ -1,0 +1,6 @@
+%tr
+  %td= account_category.name
+  %td= account_category.description
+  %td= link_to 'Show', account_category
+  %td= link_to 'Edit', edit_account_category_path(account_category)
+  %td= link_to 'Destroy', account_category, method: :delete, data: { confirm: 'Are you sure?' }

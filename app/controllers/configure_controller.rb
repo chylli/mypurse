@@ -13,7 +13,7 @@ class ConfigureController < ApplicationController
 
   #TODO test active class in haml
   def account_categories
-
+    @account_categories = AccountCategory.all
   end
 
 end
