@@ -42,6 +42,9 @@ gem 'bcrypt', '~> 3.1.7'
 # Use haml as template engine
 gem 'haml-rails'
 
+# Gem for category tree
+gem 'ancestry'
+
 group :test do
  #gem 'rspec-rails'
   #gem 'factory_girl_rails'
