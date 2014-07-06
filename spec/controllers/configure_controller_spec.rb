@@ -33,4 +33,12 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(response).to render_template("account_categories")
     end
   end
+
+  describe 'Get  accounts' do
+    it "return http success" do
+      get 'accounts', {}, valid_session
+      expect(response).to be_success
+      expect(response).to render_template("accounts")
+    end
+  end
 end
