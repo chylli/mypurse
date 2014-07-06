@@ -31,6 +31,6 @@ RSpec.describe "accounts/index", :type => :view do
     assert_select "tr>td", :text => "Category".to_s, :count => 2
     assert_select "tr>td", :text => "SystemAccount".to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
-    expect(response).to match(/href="\/system_accounts\/\d+\"/)
+    expect(rendered).to match(/href="\/system_accounts\/\d+\"/)
   end
 end
