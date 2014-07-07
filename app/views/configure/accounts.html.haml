@@ -1,5 +1,8 @@
+%h1.page-header
+  = t("Accounts")
+
 .row
   .col-sm-3.col-md-2
-    hello
+    = nested_account_categories @user.account_categories.arrange(:order => :created_at)
   .col-sm-6.col-sm-offset-3.col-md-8.col-md-offset-2.main
     world
