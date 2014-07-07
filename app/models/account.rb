@@ -3,7 +3,7 @@ class Account < ActiveRecord::Base
   TYPES = %w(SystemAccount CashAccount DemandAccount LiabilityAccount CreditCardAccount)
 
 
-  validates :name, presence: true, uniqueness: true, length: {maximum:32}
+  validates :name, presence: true, length: {maximum:32}
   validates :user_id, presence: true
   validates :description, length: {maximum:255}
   validates :balance, presence: true
