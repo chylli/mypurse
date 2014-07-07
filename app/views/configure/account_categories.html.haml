@@ -1,5 +1,5 @@
 %h1.page-header
   = t("Account Categories")
 
-= nested_account_categories @account_categories.arrange(:order => :created_at)
+= nested_account_categories @user.account_categories.arrange(:order => :created_at), "account_categories/account_category"
 
