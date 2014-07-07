@@ -28,11 +28,12 @@ class User < ActiveRecord::Base
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
     self.system_accounts.create(name: "income", description: "total income", balance: "0.00")
     self.system_accounts.create(name: "outcome", description: "total outcome", balance: "0.00")
-    property_center = self.account_categories.create(name: "Property Center", description: "Property Center", default_account_type: "DemandAccount")
+    root_category = self.account_categories.create(name: "Accounts", description: "All Accounts")
+    property_center = self.account_categories.create(name: "Property Center", description: "Property Center", default_account_type: "DemandAccount", parent_id: root_category.id)
     self.account_categories.create(name: "Cash", description: "Cash", default_account_type: "CashAccount", parent_id: property_center.id)
     bank_center = self.account_categories.create(name: "Bank Center", description: "Bank Center", default_account_type: "DemandAccount", parent_id: property_center.id)
     self.account_categories.create(name: "Demand Deposit", description: "Demand Deposit", default_account_type: "DemandAccount", parent_id: bank_center.id)
-    liability_center = self.account_categories.create(name: "Liability Center", description: "Liability Center", default_account_type: "CreditCardAccount")
+    liability_center = self.account_categories.create(name: "Liability Center", description: "Liability Center", default_account_type: "CreditCardAccount", parent_id: root_category.id)
     self.account_categories.create(name: "Credit Card", description: "Credit Card", default_account_type: "CreditCardAccount", parent_id: liability_center.id)
   end
 
