@@ -2,7 +2,7 @@
   = t("Accounts")
 
 .row
-  .col-sm-3.col-md-2
+  .col-sm-3.col-md-2.category-sidebar
     = nested_account_categories @user.account_categories.arrange(:order => :created_at), "account_categories/account_category_simple"
   .col-sm-6.col-sm-offset-3.col-md-8.col-md-offset-2.main
-    world
+    = debug params
