@@ -40,5 +40,10 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(response).to be_success
       expect(response).to render_template("accounts")
     end
+    it "return correct accounts" do
+      get 'accounts', {}, valid_session
+      expect(assigns[:accounts].size).to eq(2)
+      get 'accounts', {:category_id => }, valid_session
+    end
   end
 end

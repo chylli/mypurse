@@ -16,6 +16,28 @@ class ConfigureController < ApplicationController
   end
 
   def accounts
+    @accounts = []
+    if params[:category_id]
+      root_category = account_categories.find(params[:category_id])
+      @accounts = build_accounts_by_tree(root_category)
+    else
+      @accounts = @user.accounts
+    end
+
+  end
+
+  private
+
+  # build accounts from category tree
+  def build_accounts_by_tree(root_category)
+    accounts = root_category.accounts.to_a
+    if root_category.has_children?
+      root_category.children.each {|category|
+        accounts.concat(build_accounts(category.accounts.to_a))
+      }
+    end
+    accounts
   end
 
 end
+
