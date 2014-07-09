@@ -24,9 +24,6 @@ class User < ActiveRecord::Base
   private
 
   def setup_relative_objects
-    if self.language
-      I18n.locale = self.language.to_sym
-    end
     self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
     #self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
