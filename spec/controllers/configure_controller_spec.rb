@@ -41,9 +41,11 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(response).to be_success
       expect(response).to render_template("accounts")
     end
-    it "return correct accounts" do
+    it "return all accounts if no category_id" do
       get 'accounts', {}, valid_session
       expect(assigns[:accounts].size).to eq(4)
+    end
+    it "return correct accounts if there is category_id" do
       category1 = create(:account_category1)
       category2 = create(:account_category2, parent_id: category1.id)
       account1 = create(:account1, category_id: category1.id)
