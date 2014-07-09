@@ -5,4 +5,24 @@
   .col-sm-3.col-md-2.category-sidebar
     = nested_account_categories @user.account_categories.arrange(:order => :created_at), "account_categories/account_category_simple"
   .col-sm-6.col-sm-offset-3.col-md-8.col-md-offset-2.main
-    = debug params
+    %table
+      %thead
+        %tr
+          %th Name
+          %th Description
+          %th Category
+          %th Type
+          %th Balance
+          %th{:colspan => "3"}
+      %tbody
+        - @accounts.each do |account|
+          %tr
+            %td= account.name
+            %td= account.description
+            %td= account.category && account.category.name
+            %td= account.type
+            %td= account.balance
+            %td= link_to 'Show', sti_account_path(account.type,account)
+            %td= link_to 'Edit', edit_account_path(account)
+            %td= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' }
+    %br/
