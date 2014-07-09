@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   private
 
   def setup_relative_objects
+    if self.language
+      I18n.locale = self.language.to_sym
+    end
     self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
     #self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
@@ -35,10 +38,10 @@ class User < ActiveRecord::Base
     self.account_categories.create!(name: I18n.t("Demand Deposit"), description: I18n.t("Demand Deposit"), default_account_type: "DemandAccount", parent_id: bank_center.id)
     liability_center = self.account_categories.create!(name: I18n.t("Liability Center"), description: I18n.t("Liability Center"), default_account_type: "CreditCardAccount", parent_id: root_category.id)
     self.account_categories.create!(name: I18n.t("Credit Card"), description: I18n.t("Credit Card"), default_account_type: "CreditCardAccount", parent_id: liability_center.id)
-    earning = self.account_categories.create!(name: "Earning", description: "Earning",default_account_type: "EarningAccount")
-    self.account_categories.create!(name: "Job Earning", description: "Job Earning", default_account_type: "EarningAccount", parent_id: earning.id)
-    expense = self.account_categories.create!(name: "Expense", description: "Expense",default_account_type: "ExpenseAccount")
-    self.account_categories.create!(name: "Clothes & Accessories", description: "Clothes & Accessories", default_account_type: "ExpenseAccount", parent_id: expense.id)
+    earning = self.account_categories.create!(name: I18n.t("Earning"), description: I18n.t("Earning"),default_account_type: "EarningAccount")
+    self.account_categories.create!(name: I18n.t("Job Earning"), description: I18n.t("Job Earning"), default_account_type: "EarningAccount", parent_id: earning.id)
+    expense = self.account_categories.create!(name: I18n.t("Expense"), description: I18n.t("Expense"),default_account_type: "ExpenseAccount")
+    self.account_categories.create!(name: I18n.t("Clothes & Accessories"), description: I18n.t("Clothes & Accessories"), default_account_type: "ExpenseAccount", parent_id: expense.id)
 
 
   end
