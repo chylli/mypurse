@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   def setup_relative_objects
     self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
-    self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
-    self.expense_accounts.create(name: "expense", description: "expense", balance: "0.00")
+    #self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
+    #self.expense_accounts.create(name: "expense", description: "expense", balance: "0.00")
     root_category = self.account_categories.create!(name: I18n.t("Accounts"), description: I18n.t("All Accounts"))
     property_center = self.account_categories.create!(name: I18n.t("Property Center"), description: I18n.t("Property Center"), default_account_type: "DemandAccount", parent_id: root_category.id)
     self.account_categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)
@@ -35,6 +35,12 @@ class User < ActiveRecord::Base
     self.account_categories.create!(name: I18n.t("Demand Deposit"), description: I18n.t("Demand Deposit"), default_account_type: "DemandAccount", parent_id: bank_center.id)
     liability_center = self.account_categories.create!(name: I18n.t("Liability Center"), description: I18n.t("Liability Center"), default_account_type: "CreditCardAccount", parent_id: root_category.id)
     self.account_categories.create!(name: I18n.t("Credit Card"), description: I18n.t("Credit Card"), default_account_type: "CreditCardAccount", parent_id: liability_center.id)
+    earning = self.account_categories.create!(name: "Earning", description: "Earning",default_account_type: "EarningAccount")
+    self.account_categories.create!(name: "Job Earning", description: "Job Earning", default_account_type: "EarningAccount", parent_id: earning.id)
+    expense = self.account_categories.create!(name: "Expense", description: "Expense",default_account_type: "ExpenseAccount")
+    self.account_categories.create!(name: "Clothes & Accessories", description: "Clothes & Accessories", default_account_type: "ExpenseAccount", parent_id: expense.id)
+
+
   end
 
 end

@@ -82,7 +82,7 @@ RSpec.describe AccountCategoriesController, :type => :controller do
       it "creates a new AccountCategory" do
         expect {
           post :create, {:account_category => valid_attributes2}, valid_session
-        }.to change(AccountCategory, :count).by(8)
+        }.to change(AccountCategory, :count).by(12)
       end
 
       it "assigns a newly created account_category as @account_category" do

@@ -21,4 +21,5 @@ class Account < ActiveRecord::Base
 
   #TODO validate default value
 
+  
 end

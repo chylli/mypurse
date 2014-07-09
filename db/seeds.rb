@@ -8,4 +8,5 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #Currency.create([{ name: '人民币', abbr: 'RMB', symbol: '￥' },{ name: '美元', abbr: 'USD', symbol: '$'}])
-
+User.create!(name: 'testuser1', email: 'testuser1@example.com', password: 'password', password_confirmation: 'password',language: 'en')
+User.create!(name: 'testuser2', email: 'testuser2@example.com', password: 'password', password_confirmation: 'password',language: 'zh')

@@ -82,7 +82,7 @@ RSpec.describe AccountsController, :type => :controller do
       it "creates a new Account" do
         expect {
           post :create, {:account => valid_attributes2}, valid_session
-        }.to change(Account, :count).by(3)
+        }.to change(Account, :count).by(5)
         #here it is 3 because the user will create 2 system accounts automatically
       end
 

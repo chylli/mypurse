@@ -43,7 +43,7 @@ RSpec.describe ConfigureController, :type => :controller do
     end
     it "return correct accounts" do
       get 'accounts', {}, valid_session
-      expect(assigns[:accounts].size).to eq(2)
+      expect(assigns[:accounts].size).to eq(4)
       category1 = create(:account_category1)
       category2 = create(:account_category2, parent_id: category1.id)
       account1 = create(:account1, category_id: category1.id)
