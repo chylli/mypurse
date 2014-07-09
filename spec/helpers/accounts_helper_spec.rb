@@ -33,7 +33,7 @@ RSpec.describe AccountsHelper, :type => :helper do
   end
 
   it "get sti_account_path" do
-    account = create(:account)
+    account = create(:account3)
     expect(helper.sti_account_path("SystemAccount", account, "edit")).to eq("/system_accounts/#{account.id}/edit")
   end
 

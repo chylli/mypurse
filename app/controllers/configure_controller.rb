@@ -18,7 +18,7 @@ class ConfigureController < ApplicationController
   def accounts
     @accounts = []
     if params[:category_id]
-      root_category = account_categories.find(params[:category_id])
+      root_category = AccountCategory.find(params[:category_id])
       @accounts = build_accounts_by_tree(root_category)
     else
       @accounts = @user.accounts
@@ -33,7 +33,7 @@ class ConfigureController < ApplicationController
     accounts = root_category.accounts.to_a
     if root_category.has_children?
       root_category.children.each {|category|
-        accounts.concat(build_accounts(category.accounts.to_a))
+        accounts.concat(build_accounts_by_tree(category))
       }
     end
     accounts

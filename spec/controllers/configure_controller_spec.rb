@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe ConfigureController, :type => :controller do
 
   let(:user) {
-    User.create!(:name => 'name', :email => 'email@example.com', :password => 'password', :password_confirmation => 'password')
+    create(:user1)
+    #User.create!(:name => 'name', :email => 'email@example.com', :password => 'password', :password_confirmation => 'password')
   }
 
   let(:valid_session) { {user_id: user.to_param} }
@@ -43,7 +44,13 @@ RSpec.describe ConfigureController, :type => :controller do
     it "return correct accounts" do
       get 'accounts', {}, valid_session
       expect(assigns[:accounts].size).to eq(2)
-      get 'accounts', {:category_id => }, valid_session
+      category1 = create(:account_category1)
+      category2 = create(:account_category2, parent_id: category1.id)
+      account1 = create(:account1, category_id: category1.id)
+      account2 = create(:account2, category_id: category2.id)
+      get 'accounts', {:category_id => category1.id }, valid_session
+      expect(assigns[:accounts].size).to eq(2)      
+      get 'accounts', {:category_id => category2.id }, valid_session
     end
   end
 end
