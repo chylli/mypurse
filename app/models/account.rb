@@ -1,6 +1,6 @@
 class Account < ActiveRecord::Base
   
-  TYPES = %w(SystemAccount CashAccount DemandAccount LiabilityAccount CreditCardAccount)
+  TYPES = %w(CashAccount DemandAccount LiabilityAccount CreditCardAccount EarningAccount ExpenseAccount)
 
 
   validates :name, presence: true, length: {maximum:32}

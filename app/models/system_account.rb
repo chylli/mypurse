@@ -1,3 +1,0 @@
-class SystemAccount < Account
-
-end

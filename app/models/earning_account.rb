@@ -1,0 +1,3 @@
+class EarningAccount < Account
+
+end

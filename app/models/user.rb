@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   def setup_relative_objects
     self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
-    self.system_accounts.create(name: "income", description: "total income", balance: "0.00")
-    self.system_accounts.create(name: "outcome", description: "total outcome", balance: "0.00")
+    self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
+    self.expense_accounts.create(name: "expense", description: "expense", balance: "0.00")
     root_category = self.account_categories.create!(name: I18n.t("Accounts"), description: I18n.t("All Accounts"))
     property_center = self.account_categories.create!(name: I18n.t("Property Center"), description: I18n.t("Property Center"), default_account_type: "DemandAccount", parent_id: root_category.id)
     self.account_categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)

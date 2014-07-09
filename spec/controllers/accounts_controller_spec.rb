@@ -28,7 +28,7 @@ RSpec.describe AccountsController, :type => :controller do
   # adjust the attributes here as well.
   # It is used to create an Account directly
   let(:valid_attributes) {
-    {user_id: user.id, name: "name", type: "SystemAccount"}
+    {user_id: user.id, name: "name", type: "EarningAccount"}
   }
 
   # This is used to post to create an Account

@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   resources :accounts
   
   # for STI
-  resources :system_accounts, controller: 'accounts', type: 'SystemAccount'
+  resources :earning_accounts, controller: 'accounts', type: 'EarningAccount'
+  resources :expense_accounts, controller: 'accounts', type: 'ExpenseAccount'
 
   resources :account_categories
 
