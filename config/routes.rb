@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   get 'configure/accounts'
   resources :transactions
 
-  resources :transaction_categories
-
   resources :accounts
 
   # for STI
