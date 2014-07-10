@@ -1,4 +1,4 @@
-class AccountCategory < ActiveRecord::Base
+class Category < ActiveRecord::Base
   has_ancestry orphan_strategy: :adopt
   validates :name, presence: true, length: {maximum:32}
   validates :user_id, presence: true

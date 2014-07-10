@@ -26,12 +26,12 @@ RSpec.describe TransactionCategoriesController, :type => :controller do
   # This should return the minimal set of attributes required to create a valid
   # TransactionCategory. As you add validations to TransactionCategory, be sure to
   # adjust the attributes here as well.
-  # It is used to create an AccountCategory directly
+  # It is used to create an Category directly
   let(:valid_attributes) {
     {user_id: user.id, :name => 'name'}
   }
 
-  # This is used to post to create an AccountCategory
+  # This is used to post to create an Category
   let(:valid_attributes2) {
     {name: "type", description: "account type"}
   }

@@ -7,7 +7,7 @@ RSpec.describe User, :type => :model do
   it { should_not allow_value('asdfjkl').for(:email).on(:create) }
   it { should allow_value('1234567').for(:password).on(:create) }
   it { should_not allow_value('1234').for(:password).on(:create) }
-  it { should have_many(:account_categories).dependent(:destroy) }
+  it { should have_many(:categories).dependent(:destroy) }
   it { should have_many(:accounts).dependent(:destroy) }
   it { should have_many(:transactions).dependent(:destroy)}
   it { should have_many(:currencies).dependent(:destroy)} 
@@ -20,7 +20,7 @@ RSpec.describe User, :type => :model do
     user1 = create(:user1)
     expect(user1.currencies.size).to eq(2)
     #expect(user1.earning_accounts.size).to eq(2)
-    expect(user1.account_categories.size).to eq(11)
+    expect(user1.categories.size).to eq(11)
   end
   
 

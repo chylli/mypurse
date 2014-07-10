@@ -11,23 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140707101414) do
+ActiveRecord::Schema.define(version: 20140710100131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "account_categories", force: true do |t|
-    t.integer  "user_id",                         null: false
-    t.string   "name",                 limit: 32, null: false
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "default_account_type"
-    t.string   "ancestry"
-  end
-
-  add_index "account_categories", ["ancestry"], name: "index_account_categories_on_ancestry", using: :btree
-  add_index "account_categories", ["user_id"], name: "index_account_categories_on_user_id", using: :btree
 
   create_table "accounts", force: true do |t|
     t.string   "name"
@@ -44,6 +31,19 @@ ActiveRecord::Schema.define(version: 20140707101414) do
 
   add_index "accounts", ["type"], name: "index_accounts_on_type", using: :btree
   add_index "accounts", ["user_id"], name: "index_accounts_on_user_id", using: :btree
+
+  create_table "categories", force: true do |t|
+    t.integer  "user_id",                         null: false
+    t.string   "name",                 limit: 32, null: false
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "default_account_type"
+    t.string   "ancestry"
+  end
+
+  add_index "categories", ["ancestry"], name: "index_categories_on_ancestry", using: :btree
+  add_index "categories", ["user_id"], name: "index_categories_on_user_id", using: :btree
 
   create_table "currencies", force: true do |t|
     t.string   "name",       limit: 20

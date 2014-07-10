@@ -1,4 +1,0 @@
-%div{:class => (params[:category_id].to_i == account_category.id ? "active" : "")}= link_to account_category.name, configure_accounts_path(:category_id => account_category.id)
--#= link_to 'Show', account_category
--#= link_to 'Edit', edit_account_category_path(account_category)
--#= link_to 'Destroy', account_category, method: :delete, data: { confirm: 'Are you sure?' }

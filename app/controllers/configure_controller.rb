@@ -12,13 +12,13 @@ class ConfigureController < ApplicationController
   end
 
   #TODO test active class in haml
-  def account_categories
+  def categories
   end
 
   def accounts
     @accounts = []
     if params[:category_id]
-      root_category = AccountCategory.find(params[:category_id])
+      root_category = Category.find(params[:category_id])
       @accounts = build_accounts_by_tree(root_category)
     else
       @accounts = @user.accounts

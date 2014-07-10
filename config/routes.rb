@@ -3,19 +3,19 @@ Rails.application.routes.draw do
   get 'configure/language'
   patch 'configure/update_language'
 
-  get 'configure/account_categories'
+  get 'configure/categories'
   get 'configure/accounts'
   resources :transactions
 
   resources :transaction_categories
 
   resources :accounts
-  
+
   # for STI
   resources :earning_accounts, controller: 'accounts', type: 'EarningAccount'
   resources :expense_accounts, controller: 'accounts', type: 'ExpenseAccount'
 
-  resources :account_categories
+  resources :categories
 
   controller :sessions do
     get 'signin' => :new

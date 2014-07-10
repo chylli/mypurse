@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe "account_categories/show", :type => :view do
+RSpec.describe "categories/show", :type => :view do
   before(:each) do
-    @account_category = assign(:account_category, AccountCategory.create!(
+    @category = assign(:category, Category.create!(
       :user_id => 1,
       :name => "Name",
       :description => "Description",

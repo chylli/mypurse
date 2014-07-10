@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe AccountCategory, :type => :model do
+RSpec.describe Category, :type => :model do
   it { should validate_presence_of(:name) }
   it { should validate_presence_of(:user_id) }
   it { should belong_to(:user) }
@@ -19,7 +19,7 @@ RSpec.describe AccountCategory, :type => :model do
 
   it 'should not create an account if its default account type is not earning or expense' do
     create(:user1)
-    category1 = create(:account_category1, default_accounnt_type: 'DemandAccount')
+    category1 = create(:account_category1, default_account_type: 'DemandAccount')
     expect(category1.accounts.size).to eq(0)
   end
 end

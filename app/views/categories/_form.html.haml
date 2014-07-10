@@ -1,11 +1,11 @@
-= form_for(@account_category) do |f|
-  - if @account_category.errors.any?
+= form_for(@category) do |f|
+  - if @category.errors.any?
     #error_explanation
       %h2
-        = pluralize(@account_category.errors.count, "error")
+        = pluralize(@category.errors.count, "error")
         prohibited this account_category from being saved:
       %ul
-        - @account_category.errors.full_messages.each do |message|
+        - @category.errors.full_messages.each do |message|
           %li= message
   .field
     = f.label :name
