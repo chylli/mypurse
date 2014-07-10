@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+  TYPES = %w(AccountCategory EarningCategory ExpenseCategory)
+
   has_ancestry orphan_strategy: :adopt
   validates :name, presence: true, length: {maximum:32}
   validates :user_id, presence: true
@@ -6,6 +8,13 @@ class Category < ActiveRecord::Base
   validates :default_account_type, inclusion: { in: Account::TYPES + [nil]}
   belongs_to :user
   has_many :accounts, foreign_key: "category_id"
+
+  for t in TYPES
+    lambda { |t2|
+      scope t2.underscore.pluralize.to_sym, -> {where(type: t2)}
+    }.call(t)
+  end
+
 
   after_create :setup_earning_expense_accounts
   #TODO should limit the parent row to be the same user
