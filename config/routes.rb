@@ -9,11 +9,17 @@ Rails.application.routes.draw do
 
   resources :accounts
 
-  # for STI
+  # for account STI
   resources :earning_accounts, controller: 'accounts', type: 'EarningAccount'
   resources :expense_accounts, controller: 'accounts', type: 'ExpenseAccount'
 
   resources :categories
+
+  # for Category STI
+  resources :account_categories, controller: 'categories', type: 'AccountCategory'
+  resources :earning_categories, controller: 'categories', type: 'EarningCategory'
+  resources :expense_categories, controller: 'categories', type: 'ExpenseCategory'
+
 
   controller :sessions do
     get 'signin' => :new

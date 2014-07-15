@@ -1,0 +1,3 @@
+class AccountCategory < Category
+
+end

@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     delegate t.underscore.pluralize.to_sym, to: :accounts
   end
 
+  for t in Category::TYPES
+    delegate t.underscore.pluralize.to_sym, to: :categories
+  end
+
   after_create :setup_relative_objects
 
 
@@ -28,13 +32,13 @@ class User < ActiveRecord::Base
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
     #self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
     #self.expense_accounts.create(name: "expense", description: "expense", balance: "0.00")
-    root_category = self.categories.create!(name: I18n.t("Accounts"), description: I18n.t("All Accounts"))
-    property_center = self.categories.create!(name: I18n.t("Property Center"), description: I18n.t("Property Center"), default_account_type: "DemandAccount", parent_id: root_category.id)
-    self.categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)
-    bank_center = self.categories.create!(name: I18n.t("Bank Center"), description: I18n.t("Bank Center"), default_account_type: "DemandAccount", parent_id: property_center.id)
-    self.categories.create!(name: I18n.t("Demand Deposit"), description: I18n.t("Demand Deposit"), default_account_type: "DemandAccount", parent_id: bank_center.id)
-    liability_center = self.categories.create!(name: I18n.t("Liability Center"), description: I18n.t("Liability Center"), default_account_type: "CreditCardAccount", parent_id: root_category.id)
-    self.categories.create!(name: I18n.t("Credit Card"), description: I18n.t("Credit Card"), default_account_type: "CreditCardAccount", parent_id: liability_center.id)
+    root_category = self.account_categories.create!(name: I18n.t("Accounts"), description: I18n.t("All Accounts"))
+    property_center = self.account_categories.create!(name: I18n.t("Property Center"), description: I18n.t("Property Center"), default_account_type: "DemandAccount", parent_id: root_category.id)
+    self.account_categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)
+    bank_center = self.account_categories.create!(name: I18n.t("Bank Center"), description: I18n.t("Bank Center"), default_account_type: "DemandAccount", parent_id: property_center.id)
+    self.account_categories.create!(name: I18n.t("Demand Deposit"), description: I18n.t("Demand Deposit"), default_account_type: "DemandAccount", parent_id: bank_center.id)
+    liability_center = self.account_categories.create!(name: I18n.t("Liability Center"), description: I18n.t("Liability Center"), default_account_type: "CreditCardAccount", parent_id: root_category.id)
+    self.account_categories.create!(name: I18n.t("Credit Card"), description: I18n.t("Credit Card"), default_account_type: "CreditCardAccount", parent_id: liability_center.id)
     earning = self.categories.create!(name: I18n.t("Earning"), description: I18n.t("Earning"),default_account_type: "EarningAccount")
     self.categories.create!(name: I18n.t("Job Earning"), description: I18n.t("Job Earning"), default_account_type: "EarningAccount", parent_id: earning.id)
     expense = self.categories.create!(name: I18n.t("Expense"), description: I18n.t("Expense"),default_account_type: "ExpenseAccount")

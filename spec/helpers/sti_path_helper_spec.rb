@@ -10,7 +10,7 @@ require 'rails_helper'
 #     end
 #   end
 # end
-RSpec.describe AccountsHelper, :type => :helper do
+RSpec.describe StiPathHelper, :type => :helper do
   it "format action string with blank" do
     expect(helper.format_action(nil)).to eq("")
   end
@@ -35,6 +35,11 @@ RSpec.describe AccountsHelper, :type => :helper do
   it "get sti_account_path" do
     account = create(:account3)
     expect(helper.sti_account_path("EarningAccount", account, "edit")).to eq("/earning_accounts/#{account.id}/edit")
+  end
+
+  it "get sti_category_path" do
+    category = create(:category1, type: 'EarningCategory')
+    expect(helper.sti_category_path("EarningCategory", category, "edit")).to eq("/earning_categories/#{category.id}/edit")
   end
 
 end

@@ -1,10 +1,12 @@
 class CategoriesController < ApplicationController
+  before_action :set_type
+
   before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /Categories
   # GET /Categories.json
   def index
-    @categories = Category.all
+    @categories = type_class.all
   end
 
   # GET /Categories/1
@@ -14,7 +16,7 @@ class CategoriesController < ApplicationController
 
   # GET /Categories/new
   def new
-    @category = Category.new
+    @category = type_class.new
   end
 
   # GET /Categories/1/edit
@@ -24,7 +26,7 @@ class CategoriesController < ApplicationController
   # POST /Categories
   # POST /Categories.json
   def create
-    @category = Category.new(account_category_params)
+    @category = type_class.new(category_params)
     @category.user = @user
 
     respond_to do |format|
@@ -42,7 +44,7 @@ class CategoriesController < ApplicationController
   # PATCH/PUT /Categories/1.json
   def update
     respond_to do |format|
-      if @category.update(account_category_params)
+      if @category.update(category_params)
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
@@ -70,7 +72,20 @@ class CategoriesController < ApplicationController
 
     #TODO test user_id is filted
     # Never trust parameters from the scary internet, only allow the white list through.
-    def account_category_params
+    def category_params
       params.require(:category).permit(:name, :description, :parent_id)
     end
+
+    def set_type
+      @teyp = type
+    end
+
+    def type
+      Category::TYPES.include?(params[:type]) ? params[:type] : "AccountCategory"
+    end
+
+    def type_class
+      type.constantize
+    end
+
 end

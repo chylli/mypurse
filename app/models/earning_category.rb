@@ -1,0 +1,3 @@
+class EarningCategory < Category
+
+end

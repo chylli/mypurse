@@ -28,12 +28,12 @@ RSpec.describe CategoriesController, :type => :controller do
   # adjust the attributes here as well.
   # It is used to create an Category directly
   let(:valid_attributes) {
-    {user_id: user.id, :name => 'name'}
+    {user_id: user.id, :name => 'name', type: "AccountCategory"}
   }
 
   # This is used to post to create an Category
   let(:valid_attributes2) {
-    {name: "type", description: "account type"}
+    {name: "type", description: "account type", type: 'AccountCategory'}
   }
 
   let(:invalid_attributes) {

@@ -11,15 +11,15 @@ RSpec.describe Category, :type => :model do
 
   it 'should create an account if its default account type is earning or expense' do
     create(:user1)
-    category1 = create(:account_category1, default_account_type: 'EarningAccount')
+    category1 = create(:category1, default_account_type: 'EarningAccount')
     expect(category1.accounts.size).to eq(1)
-    category2 = create(:account_category2, default_account_type: 'EarningAccount')
+    category2 = create(:category2, default_account_type: 'EarningAccount')
     expect(category2.accounts.size).to eq(1)
   end
 
   it 'should not create an account if its default account type is not earning or expense' do
     create(:user1)
-    category1 = create(:account_category1, default_account_type: 'DemandAccount')
+    category1 = create(:category1, default_account_type: 'DemandAccount')
     expect(category1.accounts.size).to eq(0)
   end
 end

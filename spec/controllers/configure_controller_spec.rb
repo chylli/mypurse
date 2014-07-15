@@ -46,8 +46,8 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(assigns[:accounts].size).to eq(4)
     end
     it "return correct accounts if there is category_id" do
-      category1 = create(:account_category1)
-      category2 = create(:account_category2, parent_id: category1.id)
+      category1 = create(:category1)
+      category2 = create(:category2, parent_id: category1.id)
       account1 = create(:account1, category_id: category1.id)
       account2 = create(:account2, category_id: category2.id)
       get 'accounts', {:category_id => category1.id }, valid_session
