@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'booking/index'
+
   get 'configure/language'
   patch 'configure/update_language'
 

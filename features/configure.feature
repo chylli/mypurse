@@ -4,7 +4,7 @@ Feature: Configure flow
   I want to sign in and configure something
   So that change the behaviour of app
 
-  @wip @javascript
+  @javascript
   Scenario: confgure language
     When I signed in with a valid user
     And I visit the configure language page
