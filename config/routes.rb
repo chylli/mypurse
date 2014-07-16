@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'accounting/index'
+
   get 'booking/index'
 
   get 'configure/language'
