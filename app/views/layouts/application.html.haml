@@ -17,8 +17,8 @@
           = link_to "Mypurse", root_path, class: "navbar-brand"
         .collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li{ :class => controller_name == 'transactions' ? "active" : "" }
-              = link_to t("Booking"), transactions_path
+            %li{ :class => controller_name == 'accounting' ? "active" : "" }
+              = link_to t("Accounting"), accounting_index_path
             %li{ :class => controller_name == 'configure' ? "active" : "" }
               = link_to t("Configure"), configure_language_path
             %li= link_to t("About"), "#about"
