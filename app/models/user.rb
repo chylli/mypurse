@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
     #self.expense_accounts.create(name: "expense", description: "expense", balance: "0.00")
     root_category = self.account_categories.create!(name: I18n.t("Accounts"), description: I18n.t("All Accounts"))
     property_center = self.account_categories.create!(name: I18n.t("Property Center"), description: I18n.t("Property Center"), default_account_type: "DemandAccount", parent_id: root_category.id)
-    self.account_categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)
+    cash_category = self.account_categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)
     bank_center = self.account_categories.create!(name: I18n.t("Bank Center"), description: I18n.t("Bank Center"), default_account_type: "DemandAccount", parent_id: property_center.id)
     self.account_categories.create!(name: I18n.t("Demand Deposit"), description: I18n.t("Demand Deposit"), default_account_type: "DemandAccount", parent_id: bank_center.id)
     liability_center = self.account_categories.create!(name: I18n.t("Liability Center"), description: I18n.t("Liability Center"), default_account_type: "CreditCardAccount", parent_id: root_category.id)
@@ -44,6 +44,10 @@ class User < ActiveRecord::Base
     expense = self.categories.create!(name: I18n.t("Expense"), description: I18n.t("Expense"),default_account_type: "ExpenseAccount")
     self.categories.create!(name: I18n.t("Clothes & Accessories"), description: I18n.t("Clothes & Accessories"), default_account_type: "ExpenseAccount", parent_id: expense.id)
 
+    #TODO remove these lines after finished create account pages
+    # used to cucumber test temporarily
+    cash_category.accounts.create!(name: 'testcash1', type: cash_category.default_account_type, user_id: self.id)
+    cash_category.accounts.create!(name: 'testcash2', type: cash_category.default_account_type, user_id: self.id)
 
   end
 

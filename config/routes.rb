@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'accounting/index'
+  get 'accounting/accounts'
 
   get 'booking/index'
 
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
   # for account STI
   resources :earning_accounts, controller: 'accounts', type: 'EarningAccount'
   resources :expense_accounts, controller: 'accounts', type: 'ExpenseAccount'
+  resources :cash_accounts, controller: 'accounts', type: 'CashAccount'
 
   resources :categories
 

@@ -24,5 +24,6 @@ FactoryGirl.define do
     type "SystemAccount"
     balance "9.99"
   end
+
   
 end

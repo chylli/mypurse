@@ -1,5 +1,5 @@
 .row
   .col-sm-3.col-md-2.sidebar
     %ul.nav.nav-sidebar
-    = nested_categories @user.categories.arrange(:order => :created_at), "configure/category_simple"
+    = nested_categories @user.categories.arrange(:order => :created_at), "accounting/category"
 
