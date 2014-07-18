@@ -2,4 +2,6 @@
   .col-sm-3.col-md-2.sidebar
     %ul.nav.nav-sidebar
     = nested_categories @user.categories.arrange(:order => :created_at), "accounting/category"
+  .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+    = yield
 

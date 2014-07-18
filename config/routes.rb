@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   get 'accounting/index'
   get 'accounting/accounts'
+  get 'accounting/transactions'
 
   get 'booking/index'
 
