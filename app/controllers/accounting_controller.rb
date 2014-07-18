@@ -8,4 +8,8 @@ class AccountingController < ApplicationController
     #TODO test category is belongs to the user
     @accounts = @category.accounts
   end
+
+  def transactions
+
+  end
 end

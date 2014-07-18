@@ -21,6 +21,8 @@ Feature: Accounting flow
     And I visit the accounting index page
     And I click the 'Cash' link
     Then it will display 'testcash1'
+    When I click the 'testcash1' link
+    Then it will display button 'Accounting' 
 
 
 
