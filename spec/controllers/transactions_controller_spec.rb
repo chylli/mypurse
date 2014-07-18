@@ -29,7 +29,6 @@ RSpec.describe TransactionsController, :type => :controller do
   let(:valid_attributes) {
     {
       user_id: 1,
-      category_id: 1,
       debit_id: 1,
       credit_id: 2,
       amount: "9.99"
@@ -38,7 +37,6 @@ RSpec.describe TransactionsController, :type => :controller do
 
   let(:valid_attributes2) {
     {
-      category_id: 1,
       debit_id: 1,
       credit_id: 2,
       amount: "9.99"
@@ -48,7 +46,6 @@ RSpec.describe TransactionsController, :type => :controller do
   let(:invalid_attributes) {
     {
       user_id: 1,
-      category_id: 1,
       debit_id: nil,
       amount: "9.99"
     }

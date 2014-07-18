@@ -4,7 +4,6 @@
     %thead
       %tr
         %th User
-        %th Category
         %th Debit
         %th Credit
         %th Amount
@@ -13,7 +12,6 @@
       - @transactions.each do |transaction|
         %tr
           %td= transaction.user_id
-          %td= transaction.category_id
           %td= transaction.debit_id
           %td= transaction.credit_id
           %td= transaction.amount

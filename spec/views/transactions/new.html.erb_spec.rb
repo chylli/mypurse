@@ -4,7 +4,6 @@ RSpec.describe "transactions/new", :type => :view do
   before(:each) do
     assign(:transaction, Transaction.new(
       :user_id => 1,
-      :category_id => 1,
       :debit_id => 1,
       :credit_id => 1,
       :amount => "9.99"
@@ -15,8 +14,6 @@ RSpec.describe "transactions/new", :type => :view do
     render
 
     assert_select "form[action=?][method=?]", transactions_path, "post" do
-
-      assert_select "input#transaction_category_id[name=?]", "transaction[category_id]"
 
       assert_select "input#transaction_debit_id[name=?]", "transaction[debit_id]"
 
