@@ -1,4 +1,4 @@
-When(/^I click the '(.*)' link$/) do |link_name|
+When(/^I click the link '(.*)'$/) do |link_name|
   click_link link_name
 end
 
