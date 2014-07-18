@@ -14,7 +14,6 @@ Feature: Accounting flow
     Then it will redirect to the accounting index page
 #    And it will display 'transaction1'
 
-  @wip
   Scenario: Show accounts when click a category
     Given I signed in with a valid user
     #And I create account 'account_cash' under category 'Cash'
@@ -22,7 +21,7 @@ Feature: Accounting flow
     And I click the 'Cash' link
     Then it will display 'testcash1'
     When I click the 'testcash1' link
-    Then it will display button 'Accounting' 
+    Then it will display the button 'Submit' 
 
 
 

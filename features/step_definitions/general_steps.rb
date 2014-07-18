@@ -7,8 +7,14 @@ Then(/^it will redirect to (.*)$/) do |page_name|
 end
 
 Then(/^it will display '(.*)'$/) do |content|
+  save_and_open_page
   expect(page).to have_content(content)
 end
+
+Then(/^it will display the button '(.*)'$/) do |button_name|
+  expect(page).to have_button(button_name)
+end
+
 
 Then(/^it will not display '(.*)'$/) do |content|
   expect(page).not_to have_content(content)

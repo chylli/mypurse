@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   get 'accounting/index'
-  get 'accounting/accounts/:category_id', to: "accounting#accounts", as: :accounting_accounts
-  get 'accounting/transactions/:account_id', to: "accounting#transactions", as: :accounting_transactions
+  get 'accounting/accounts'
+  get 'accounting/transactions'
 
   get 'booking/index'
 
