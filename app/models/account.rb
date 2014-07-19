@@ -21,5 +21,10 @@ class Account < ActiveRecord::Base
 
   #TODO validate default value
 
+
+  def recalculate_balance
+    self.balance = self.credit_transactions.sum('amount') - self.debit_transactions.sum('amount')
+    self.save!
+  end
   
 end
