@@ -16,6 +16,7 @@ RSpec.describe "transactions/index", :type => :view do
         :amount => "9.99"
       )
     ])
+    assign(:transaction, Transaction.new)
   end
 
   it "renders a list of transactions" do

@@ -10,7 +10,9 @@ class TransactionsController < ApplicationController
       @transaction = @account.debit_transactions.new(user_id: @user.id)
     else
       @transactions = Transaction.all
+      @transaction = @user.transactions.new;
     end
+
   end
 
 

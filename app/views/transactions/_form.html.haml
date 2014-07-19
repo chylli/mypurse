@@ -10,14 +10,14 @@
   .field
     = f.label :debit_id
     %br/
-    = f.number_field :debit_id
+    = collection_select :transaction, :debit_id, Account.all, :id, :name
   .field
     = f.label :credit_id
     %br/
-    = f.number_field :credit_id
+    = collection_select :transaction, :credit_id, Account.all, :id, :name
   .field
     = f.label :amount
     %br/
     = f.text_field :amount
   .actions
-    = f.submit
+    = f.submit value: 'Submit'

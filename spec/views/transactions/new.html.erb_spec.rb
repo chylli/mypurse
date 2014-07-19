@@ -15,9 +15,9 @@ RSpec.describe "transactions/new", :type => :view do
 
     assert_select "form[action=?][method=?]", transactions_path, "post" do
 
-      assert_select "input#transaction_debit_id[name=?]", "transaction[debit_id]"
+      assert_select "select#transaction_debit_id[name=?]", "transaction[debit_id]"
 
-      assert_select "input#transaction_credit_id[name=?]", "transaction[credit_id]"
+      assert_select "select#transaction_credit_id[name=?]", "transaction[credit_id]"
 
       assert_select "input#transaction_amount[name=?]", "transaction[amount]"
     end
