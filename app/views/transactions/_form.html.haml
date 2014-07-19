@@ -10,11 +10,11 @@
   .field
     = f.label :debit_id
     %br/
-    = collection_select :transaction, :debit_id, Account.all, :id, :name
+    = collection_select :transaction, :debit_id, @user.accounts, :id, :name
   .field
     = f.label :credit_id
     %br/
-    = collection_select :transaction, :credit_id, Account.all, :id, :name
+    = collection_select :transaction, :credit_id, @user.accounts, :id, :name
   .field
     = f.label :amount
     %br/
