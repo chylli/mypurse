@@ -30,9 +30,15 @@ Feature: User Signin Flow
     Then it will display 'User was successfully updated'
 
   Scenario: update user language will change the shown language
-    When I signed in with a valid user
+    Given I signed in with a valid user
     And I visit the edit user page
     When I filled the 'Current Password' with correct password
     And I filled the 'Preferred Language' with 'zh'
     And I click the 'Update' button
     Then it will display '关于'
+    Given I visit the edit user page
+    When I filled the '当前密码' with correct password
+    And I filled the '语言偏好' with 'en'
+    And I click the '更新' button
+    Then it will display 'About'
+

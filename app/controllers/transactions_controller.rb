@@ -4,8 +4,23 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    @transactions = Transaction.all
+    @account = params[:account_id] ?  Account.find(params[:account_id]) : nil
+    if @account 
+      @transactions = @account.debit_transactions.to_a + @account.credit_transactions.to_a
+      @transaction = @account.debit_transactions.new(user_id: @user.id)
+    else
+      @transactions = Transaction.all
+    end
   end
+
+
+  def accounts
+    #TODO check params category_id
+    @category = Category.find(params[:category_id])
+    #TODO test category is belongs to the user
+    @accounts = @category.accounts
+  end
+
 
   # GET /transactions/1
   # GET /transactions/1.json

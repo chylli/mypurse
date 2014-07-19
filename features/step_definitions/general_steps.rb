@@ -7,7 +7,6 @@ Then(/^it will redirect to (.*)$/) do |page_name|
 end
 
 Then(/^it will display '(.*)'$/) do |content|
-  save_and_open_page
   expect(page).to have_content(content)
 end
 

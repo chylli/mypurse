@@ -1,17 +1,22 @@
 Rails.application.routes.draw do
 
-  get 'accounting/index'
-  get 'accounting/accounts'
-  get 'accounting/transactions'
+  #get 'accounting/index'
+  #get 'accounting/accounts'
+  #get 'accounting/transactions'
 
-  get 'booking/index'
+  #get 'booking/index'
 
   get 'configure/language'
   patch 'configure/update_language'
 
   get 'configure/categories'
   get 'configure/accounts'
-  resources :transactions
+
+  resources :transactions do
+    collection do
+      get 'accounts'
+    end
+  end
 
   resources :accounts
 

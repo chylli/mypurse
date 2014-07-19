@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 Given(/^a user named (\w+)$/) do |username|
   create(username)
 end
@@ -28,4 +29,14 @@ end
 When(/^I filled the 'Preferred Language' with 'zh'$/) do
   select 'zh', :from => 'Preferred Language'
 end
+
+When(/^I filled the '当前密码' with correct password$/) do
+  user = build(:user1)
+  fill_in "当前密码", with: user.password
+end
+
+When(/^I filled the '语言偏好' with 'en'$/) do
+  select 'en', :from => '语言偏好'
+end
+
 

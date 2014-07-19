@@ -1,0 +1,7 @@
+%h1= @category.name
+
+- @accounts.each do |account|
+  %div= link_to account.name, transactions_path({account_id: account.id.to_s})
+
+
+

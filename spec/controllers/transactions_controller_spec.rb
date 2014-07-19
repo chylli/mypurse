@@ -176,4 +176,14 @@ RSpec.describe TransactionsController, :type => :controller do
     end
   end
 
+  describe "GET 'accounts'" do
+    it "set accounts" do
+      category_id = user.account_categories[0].id
+      account1 = create(:account1, category_id: category_id, user_id: user.id )
+      get 'accounts', {category_id: category_id}, valid_session
+      expect(assigns[:accounts]).to include(account1)
+    end
+  end
+
+
 end
