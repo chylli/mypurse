@@ -8,4 +8,34 @@ RSpec.describe Transaction, :type => :model do
   it { should belong_to(:credit).class_name("Account") }
   it { should belong_to(:user) }
 
+  it 'will recaculate the balance of relative accounts' do
+    account1 = create(:account1)
+    account2 = create(:account2)
+
+    transaction = create(:transaction1, debit_id: account1.id, credit_id: account2.id)
+    
+    account1.reload
+    account2.reload
+
+    expect(account1.balance).to eq(-9.99)
+    expect(account2.balance).to eq(9.99)
+
+    transaction.amount = 2
+    transaction.save
+
+    account1.reload
+    account2.reload
+
+    expect(account1.balance).to eq(-2)
+    expect(account2.balance).to eq(2)
+
+    transaction.destroy
+    account1.reload
+    account2.reload
+    expect(account1.balance).to eq(0)
+    expect(account2.balance).to eq(0)
+
+
+  end
+
 end

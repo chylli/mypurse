@@ -2,10 +2,14 @@ require 'rails_helper'
 
 RSpec.describe "transactions/new", :type => :view do
   before(:each) do
+    user = assign(:user, create(:user1))
+    @account1 = create(:account1)
+    @account2 = create(:account2)
+
     assign(:transaction, Transaction.new(
-      :user_id => 1,
-      :debit_id => 1,
-      :credit_id => 1,
+      :user_id => user.id,
+      :debit_id => @account1.id,
+      :credit_id => @account2.id,
       :amount => "9.99"
     ))
   end

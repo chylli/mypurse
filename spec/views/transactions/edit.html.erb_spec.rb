@@ -2,12 +2,15 @@ require 'rails_helper'
 
 RSpec.describe "transactions/edit", :type => :view do
   before(:each) do
-    @transaction = assign(:transaction, Transaction.create!(
-      :user_id => 1,
-      :debit_id => 1,
-      :credit_id => 1,
-      :amount => "9.99"
-    ))
+    user = assign(:user, create(:user1))
+    account1 = create(:account1)
+    account2 = create(:account2)
+    @transaction = assign(:transaction,
+      create(:transaction1, 
+        user_id: user.id,
+        :debit_id => account1.id,
+        :credit_id => account2.id,
+        ))
   end
 
   it "renders the edit transaction form" do

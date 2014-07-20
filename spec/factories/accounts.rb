@@ -6,7 +6,7 @@ FactoryGirl.define do
     name
     description "MyString"
     type "DemandAccount"
-    balance "9.99"
+    balance "0.00"
   end
 
   factory :account2, class: Account do
@@ -14,7 +14,7 @@ FactoryGirl.define do
     name
     description "MyString"
     type "DemandAccount"
-    balance "9.99"
+    balance "0.00"
   end
 
   factory :account3, class: Account do
@@ -22,7 +22,7 @@ FactoryGirl.define do
     name
     description "SystemAccount"
     type "SystemAccount"
-    balance "9.99"
+    balance "0.00"
   end
 
   

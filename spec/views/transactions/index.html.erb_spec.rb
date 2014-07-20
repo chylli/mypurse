@@ -2,17 +2,21 @@ require 'rails_helper'
 
 RSpec.describe "transactions/index", :type => :view do
   before(:each) do
+    user = assign(:user, create(:user1))
+    @account1 = create(:account1)
+    @account2 = create(:account2)
+
     assign(:transactions, [
       Transaction.create!(
-        :user_id => 1,
-        :debit_id => 3,
-        :credit_id => 4,
+        :user_id => user.id,
+        :debit_id => @account1.id,
+        :credit_id => @account2.id,
         :amount => "9.99"
       ),
       Transaction.create!(
-        :user_id => 1,
-        :debit_id => 3,
-        :credit_id => 4,
+        :user_id => user.id,
+        :debit_id => @account1.id,
+        :credit_id => @account2.id,
         :amount => "9.99"
       )
     ])
@@ -22,8 +26,8 @@ RSpec.describe "transactions/index", :type => :view do
   it "renders a list of transactions" do
     render
     assert_select "tr>td", :text => 1.to_s, :count => 2
-    assert_select "tr>td", :text => 3.to_s, :count => 2
-    assert_select "tr>td", :text => 4.to_s, :count => 2
+    assert_select "tr>td", :text => @account1.id.to_s, :count => 2
+    assert_select "tr>td", :text => @account2.id.to_s, :count => 2
     assert_select "tr>td", :text => "9.99".to_s, :count => 2
   end
 end

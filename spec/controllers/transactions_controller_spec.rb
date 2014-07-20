@@ -21,24 +21,31 @@ require 'rails_helper'
 RSpec.describe TransactionsController, :type => :controller do
 
   let(:user) {
-    User.create!(:name => 'name', :email => 'email@example.com', :password => 'password', :password_confirmation => 'password')
+    create(:user1)
   }
   # This should return the minimal set of attributes required to create a valid
   # Transaction. As you add validations to Transaction, be sure to
   # adjust the attributes here as well.
+  let(:account1) {
+    create(:account1)
+  }
+  let(:account2) {
+    create(:account2)
+  }
+
   let(:valid_attributes) {
     {
-      user_id: 1,
-      debit_id: 1,
-      credit_id: 2,
+      user_id: user.id,
+      debit_id: account1.id,
+      credit_id: account2.id,
       amount: "9.99"
     }
   }
 
   let(:valid_attributes2) {
     {
-      debit_id: 1,
-      credit_id: 2,
+      debit_id: account1.id,
+      credit_id: account2.id,
       amount: "9.99"
     }
   }
