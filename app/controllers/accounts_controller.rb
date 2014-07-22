@@ -31,7 +31,8 @@ class AccountsController < ApplicationController
 
     respond_to do |format|
       if @account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        #format.html { redirect_to @account, notice: 'Account was successfully created.' }
+        format.html { redirect_to configure_accounts_path, notice: 'Account was successfully created.'}
         format.json { render :show, status: :created, location: @account }
       else
         format.html { render :new }
@@ -73,7 +74,7 @@ class AccountsController < ApplicationController
     # TODO test user_id is not permit
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:name, :description, :category_id, :type_id, :balance)
+      params.require(:account).permit(:name, :description, :category_id, :balance, :type)
     end
 
 

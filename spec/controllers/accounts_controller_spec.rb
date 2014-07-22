@@ -92,9 +92,9 @@ RSpec.describe AccountsController, :type => :controller do
         expect(assigns(:account)).to be_persisted
       end
 
-      it "redirects to the created account" do
+      it "redirects to the configure/accounts after create account" do
         post :create, {:account => valid_attributes2}, valid_session
-        expect(response).to redirect_to(Account.last)
+        expect(response).to redirect_to(configure_accounts_path)
       end
     end
 

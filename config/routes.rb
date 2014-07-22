@@ -24,6 +24,7 @@ Rails.application.routes.draw do
   resources :earning_accounts, controller: 'accounts', type: 'EarningAccount'
   resources :expense_accounts, controller: 'accounts', type: 'ExpenseAccount'
   resources :cash_accounts, controller: 'accounts', type: 'CashAccount'
+  resources :demand_accounts, controller: 'accounts', type: 'DemandAccount'
 
   resources :categories
 

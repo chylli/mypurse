@@ -24,6 +24,8 @@ class ConfigureController < ApplicationController
       @accounts = @user.accounts
     end
 
+    @account = Account.new(user_id: @user.id)
+
   end
 
   private
