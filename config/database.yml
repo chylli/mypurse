@@ -24,6 +24,7 @@ test: &test
   database: mypurse_test
 
 production:
+  <<: *default
   database: mypurse
 
 cucumber:
