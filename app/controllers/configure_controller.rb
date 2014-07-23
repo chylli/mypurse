@@ -24,6 +24,8 @@ class ConfigureController < ApplicationController
       @accounts = @user.accounts
     end
 
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
+
     @account = Account.new(user_id: @user.id)
 
   end

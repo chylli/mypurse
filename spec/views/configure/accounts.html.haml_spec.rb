@@ -6,6 +6,7 @@ describe 'configure/accounts.html.haml', type: :view do
     assign(:user, user)
     assign(:accounts, user.accounts)
     assign(:account, create(:account1))
+    assign(:categories, user.categories)
     render
     expect(rendered).to include('Accounts')
   end

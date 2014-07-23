@@ -3,7 +3,7 @@
 
 .row
   .col-sm-3.col-md-2.category-sidebar
-    = nested_categories @user.categories.arrange(:order => :created_at), "configure/category_simple"
+    = nested_categories @user.account_categories.arrange(:order => :name), "configure/category_simple"
   .col-sm-6.col-sm-offset-3.col-md-8.col-md-offset-2.main
     %table
       %thead

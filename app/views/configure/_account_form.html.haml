@@ -18,7 +18,7 @@
   .field
     = f.label :category_id
     %br/
-    = collection_select :account, :category_id, @user.categories, :id, :name 
+    = f.collection_select :category_id, @categories, :id, :name_for_selects
   .field
     = f.label :type
     %br/
