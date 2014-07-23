@@ -22,4 +22,9 @@ RSpec.describe Category, :type => :model do
     category1 = create(:category1, default_account_type: 'DemandAccount')
     expect(category1.accounts.size).to eq(0)
   end
+
+  it 'should array categories as array' do
+    user = create(:user1)
+    expect(Category.arrange_as_array({order: 'name'},user.account_categories.arrange({order: 'name'})).map(&:name)).to eq(["Accounts", "Liability Center", "Credit Card", "Property Center", "Bank Center", "Demand Deposit", "Cash"])
+  end
 end

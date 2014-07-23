@@ -41,6 +41,10 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(response).to be_success
       expect(response).to render_template("accounts")
     end
+    it "set ordered account categoires" do
+      get 'accounts', {}, valid_session
+      expect(assigns[:categories].map(&:name)).to eq(["Accounts", "Liability Center", "Credit Card", "Property Center", "Bank Center", "Demand Deposit", "Cash"])
+    end
     it "return all accounts if no category_id" do
       get 'accounts', {}, valid_session
       expect(assigns[:accounts].size).to eq(6)
@@ -48,8 +52,8 @@ RSpec.describe ConfigureController, :type => :controller do
     it "return correct accounts if there is category_id" do
       category1 = create(:category1)
       category2 = create(:category2, parent_id: category1.id)
-      account1 = create(:account1, category_id: category1.id)
-      account2 = create(:account2, category_id: category2.id)
+      create(:account1, category_id: category1.id)
+      create(:account2, category_id: category2.id)
       get 'accounts', {:category_id => category1.id }, valid_session
       expect(assigns[:accounts].size).to eq(2)      
       get 'accounts', {:category_id => category2.id }, valid_session
