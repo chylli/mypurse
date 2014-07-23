@@ -10,4 +10,10 @@ RSpec.describe Account, :type => :model do
   it { should belong_to(:category).class_name("Category")}
   it { should have_many(:debit_transactions).class_name("Transaction")}
   it { should have_many(:credit_transactions).class_name("Transaction")}
+  it 'should remove EarningAccount and ExpenseAccount when prepare types select options' do
+    options = Account.types_select_option;
+    expect(options).not_to include('EarningAccount') 
+    expect(options).not_to include('ExpenseAccount') 
+  end
+
 end

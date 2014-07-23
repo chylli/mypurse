@@ -19,6 +19,15 @@ class Account < ActiveRecord::Base
     }.call(t)
   end
 
+  def self.types_select_option
+    types = TYPES
+    # dont create accounts of these two types.
+    # only create automatically when the categories created.
+    %w(EarningAccount ExpenseAccount).each {|t| types.delete(t)}
+    types.map {|option| [option,option]}
+  end
+
+
   #TODO validate default value
 
 
@@ -26,5 +35,7 @@ class Account < ActiveRecord::Base
     self.balance = self.credit_transactions.sum('amount') - self.debit_transactions.sum('amount')
     self.save!
   end
+
+
   
 end

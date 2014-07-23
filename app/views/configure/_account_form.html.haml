@@ -22,7 +22,7 @@
   .field
     = f.label :type
     %br/
-    = f.select :type, prepare_types_select(Account::TYPES)
+    = f.select :type, Account.types_select_option
   .field
     = f.label :balance
     %br/
