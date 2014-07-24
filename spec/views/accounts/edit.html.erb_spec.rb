@@ -8,7 +8,8 @@ RSpec.describe "accounts/edit", :type => :view do
       :description => "MyString",
       :category_id => "MyString",
       :type => "Account",
-      :balance => "9.99"
+      :balance => "9.99",
+      :currency_id => 1
     ))
   end
 

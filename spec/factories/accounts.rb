@@ -6,6 +6,7 @@ FactoryGirl.define do
     name
     description "MyString"
     type "DemandAccount"
+    currency_id 1
     balance "0.00"
   end
 
@@ -14,6 +15,7 @@ FactoryGirl.define do
     name
     description "MyString"
     type "DemandAccount"
+    currency_id 1
     balance "0.00"
   end
 
@@ -22,6 +24,7 @@ FactoryGirl.define do
     name
     description "SystemAccount"
     type "SystemAccount"
+    currency_id 1
     balance "0.00"
   end
 

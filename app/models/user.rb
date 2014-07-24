@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   has_many :accounts, dependent: :destroy
   has_many :transactions, dependent: :destroy
   has_many :currencies, dependent: :destroy
+  belongs_to :default_currency, class_name: 'Currency', foreign_key: 'currency_id'
 
   for t in Account::TYPES
     delegate t.underscore.pluralize.to_sym, to: :accounts
@@ -28,8 +29,11 @@ class User < ActiveRecord::Base
   private
 
   def setup_relative_objects
-    self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
+    rmb_currency = self.currencies.create(name: 'RMB', symbol: '￥', type: 'system')
     self.currencies.create(name: 'USD', symbol: '$', type: 'system')
+    #TODO will setup default currency in the page
+    self.default_currency = rmb_currency
+    self.save
     #self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
     #self.expense_accounts.create(name: "expense", description: "expense", balance: "0.00")
     root_category = self.account_categories.create!(name: I18n.t("Accounts"), description: I18n.t("All Accounts"))
@@ -39,15 +43,10 @@ class User < ActiveRecord::Base
     self.account_categories.create!(name: I18n.t("Demand Deposit"), description: I18n.t("Demand Deposit"), default_account_type: "DemandAccount", parent_id: bank_center.id)
     liability_center = self.account_categories.create!(name: I18n.t("Liability Center"), description: I18n.t("Liability Center"), default_account_type: "CreditCardAccount", parent_id: root_category.id)
     self.account_categories.create!(name: I18n.t("Credit Card"), description: I18n.t("Credit Card"), default_account_type: "CreditCardAccount", parent_id: liability_center.id)
-    earning = self.categories.create!(name: I18n.t("Earning"), description: I18n.t("Earning"),default_account_type: "EarningAccount")
-    self.categories.create!(name: I18n.t("Job Earning"), description: I18n.t("Job Earning"), default_account_type: "EarningAccount", parent_id: earning.id)
-    expense = self.categories.create!(name: I18n.t("Expense"), description: I18n.t("Expense"),default_account_type: "ExpenseAccount")
-    self.categories.create!(name: I18n.t("Clothes & Accessories"), description: I18n.t("Clothes & Accessories"), default_account_type: "ExpenseAccount", parent_id: expense.id)
-
-    #TODO remove these lines after finished create account pages
-    # used to cucumber test temporarily
-    cash_category.accounts.create!(name: 'testcash1', type: cash_category.default_account_type, user_id: self.id)
-    cash_category.accounts.create!(name: 'testcash2', type: cash_category.default_account_type, user_id: self.id)
+    earning = self.earning_categories.create!(name: I18n.t("Earning"), description: I18n.t("Earning"),default_account_type: "EarningAccount")
+    self.earning_categories.create!(name: I18n.t("Job Earning"), description: I18n.t("Job Earning"), default_account_type: "EarningAccount", parent_id: earning.id)
+    expense = self.expense_categories.create!(name: I18n.t("Expense"), description: I18n.t("Expense"),default_account_type: "ExpenseAccount")
+    self.expense_categories.create!(name: I18n.t("Clothes & Accessories"), description: I18n.t("Clothes & Accessories"), default_account_type: "ExpenseAccount", parent_id: expense.id)
 
   end
 

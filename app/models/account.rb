@@ -7,6 +7,7 @@ class Account < ActiveRecord::Base
   validates :user_id, presence: true
   validates :description, length: {maximum:255}
   validates :balance, presence: true
+  validates :currency_id, presence: true
   belongs_to :user
   belongs_to :category, class_name: "Category"
   belongs_to :currency

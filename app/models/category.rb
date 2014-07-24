@@ -44,8 +44,9 @@ class Category < ActiveRecord::Base
 
   # create one account for every category whose default account type is earning & expense account
   def setup_earning_expense_accounts
+    # TODO move this logic to EarningCategory and ExpenseCategory model
     return unless %w(EarningAccount ExpenseAccount).include?  self.default_account_type
-    self.accounts.create!(name: self.name, description: self.description, type: self.default_account_type, user_id: self.user_id)
+    self.accounts.create!(name: self.name, description: self.description, type: self.default_account_type, user_id: self.user_id, currency_id: self.user.currency_id)
   end
 
 

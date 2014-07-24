@@ -10,7 +10,8 @@ RSpec.describe User, :type => :model do
   it { should have_many(:categories).dependent(:destroy) }
   it { should have_many(:accounts).dependent(:destroy) }
   it { should have_many(:transactions).dependent(:destroy)}
-  it { should have_many(:currencies).dependent(:destroy)} 
+  it { should have_many(:currencies).dependent(:destroy)}
+  it { should belong_to(:default_currency)}
   it { should ensure_inclusion_of(:language).in_array(%w(en zh))}
   it " available_locales have right value" do
     expect(User.available_languages).to eq(%w{en zh})

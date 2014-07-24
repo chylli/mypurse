@@ -28,12 +28,12 @@ RSpec.describe AccountsController, :type => :controller do
   # adjust the attributes here as well.
   # It is used to create an Account directly
   let(:valid_attributes) {
-    {user_id: user.id, name: "name", type: "EarningAccount"}
+    {user_id: user.id, name: "name", type: "EarningAccount",currency_id: user.currencies[0].id}
   }
 
   # This is used to post to create an Account
   let(:valid_attributes2) {
-    {name: "type", description: "account type"}
+    {name: "type", description: "account type",currency_id: user.currencies[0].id}
   }
 
   let(:invalid_attributes) {
@@ -82,7 +82,7 @@ RSpec.describe AccountsController, :type => :controller do
       it "creates a new Account" do
         expect {
           post :create, {:account => valid_attributes2}, valid_session
-        }.to change(Account, :count).by(7)
+        }.to change(Account, :count).by(5)
         #here it is 3 because the user will create 2 system accounts automatically
       end
 
