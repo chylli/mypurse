@@ -35,7 +35,8 @@ class AccountsController < ApplicationController
         format.html { redirect_to configure_accounts_path, notice: 'Account was successfully created.'}
         format.json { render :show, status: :created, location: @account }
       else
-        format.html { render :new }
+        #format.html { render :new }
+        format.html { redirect_to configure_accounts_path, notice: 'Error Happened.'}
         format.json { render json: @account.errors, status: :unprocessable_entity }
       end
     end

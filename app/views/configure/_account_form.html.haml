@@ -24,6 +24,10 @@
     %br/
     = f.select :type, Account.types_select_option
   .field
+    = f.label :currency
+    %br/
+    = f.collection_select :currency_id, @user.currencies, :id, :name
+  .field
     = f.label :init_balance
     %br/
     = f.text_field :init_balance

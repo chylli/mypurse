@@ -26,3 +26,11 @@ end
 When(/^I click the '(.*)' button$/) do |button_name|
   click_button button_name
 end
+
+When(/^I fill the '(.*)' with '(.*)'/) do |field_name, field_value|
+  fill_in field_name, with: field_value
+end
+
+When(/^I select the '(.*)' with '(.*)'/) do |field_name, field_value|
+  select field_value, from: field_name
+end

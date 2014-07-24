@@ -1,4 +1,4 @@
-Feature: Accounting flow
+Feature: Transaction flow
 
   As a user
   I want to signin and make accounting.
@@ -16,6 +16,10 @@ Feature: Accounting flow
 
   Scenario: Show accounts when click a category
     Given I signed in with a valid user
+    And I visit the configure accounts page
+    And I fill the 'Name' with 'testcash1'
+    And I select the 'Category' with 'Cash'
+    And I click the 'Create Account' button
     #And I create account 'account_cash' under category 'Cash'
     And I visit the transactions page
     And I click the link 'Cash'
