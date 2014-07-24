@@ -74,7 +74,7 @@ class AccountsController < ApplicationController
     # TODO test user_id is not permit
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:name, :description, :category_id, :balance, :type)
+      params.require(:account).permit(:name, :description, :category_id, :balance, :type, :init_balance)
     end
 
 

@@ -32,7 +32,7 @@ class Account < ActiveRecord::Base
 
 
   def recalculate_balance
-    self.balance = self.credit_transactions.sum('amount') - self.debit_transactions.sum('amount')
+    self.balance = self.init_balance + self.credit_transactions.sum('amount') - self.debit_transactions.sum('amount')
     self.save!
   end
 
