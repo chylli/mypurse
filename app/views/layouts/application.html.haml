@@ -19,6 +19,8 @@
           %ul.nav.navbar-nav
             %li{ :class => controller_name == 'transactions' ? "active" : "" }
               = link_to t("Accounting"), transactions_path
+            %li{ :class => controller_name == 'reports' ? "active" : "" }
+              = link_to t("Reports"), reports_property_path
             %li{ :class => controller_name == 'configure' ? "active" : "" }
               = link_to t("Configure"), configure_language_path
             %li= link_to t("About"), "#about"
