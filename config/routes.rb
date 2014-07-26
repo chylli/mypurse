@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'reports/property'
+
+  get 'reports/earning'
+
+  get 'reports/expense'
+
   #get 'accounting/index'
   #get 'accounting/accounts'
   #get 'accounting/transactions'

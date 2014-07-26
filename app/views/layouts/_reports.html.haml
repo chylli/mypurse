@@ -1,0 +1,31 @@
+.row
+  .col-sm-3.col-md-2.sidebar
+    %ul.nav.nav-sidebar
+      %li{ class: action_name == 'language' ? "active" : ""}
+        %a{:href => configure_language_path}= t("Language")
+      %li{ class: action_name == 'Categories' ? "active" : ""}
+        %a{:href => configure_categories_path}= t("Categories")
+      %li{ class: action_name == 'accounts' ? "active" :""}
+        %a{:href => configure_accounts_path}= t("Accounts")
+      %li
+        %a{:href => "#"} Export
+    %ul.nav.nav-sidebar
+      %li
+        %a{:href => ""} Nav item
+      %li
+        %a{:href => ""} Nav item again
+      %li
+        %a{:href => ""} One more nav
+      %li
+        %a{:href => ""} Another nav item
+      %li
+        %a{:href => ""} More navigation
+    %ul.nav.nav-sidebar
+      %li
+        %a{:href => ""} Nav item again
+      %li
+        %a{:href => ""} One more nav
+      %li
+        %a{:href => ""} Another nav item
+  .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main
+    = yield
