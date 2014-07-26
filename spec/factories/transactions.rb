@@ -6,6 +6,7 @@ FactoryGirl.define do
     debit_id 1
     credit_id 2
     amount "9.99"
+    time Time.now
   end
 
   factory :transaction2, class: Transaction do
@@ -13,6 +14,7 @@ FactoryGirl.define do
     debit_id 1
     credit_id 2
     amount "9.99"
+    time Time.now
   end
 
 end

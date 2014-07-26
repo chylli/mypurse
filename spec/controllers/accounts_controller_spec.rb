@@ -106,7 +106,7 @@ RSpec.describe AccountsController, :type => :controller do
 
       it "re-renders the 'new' template" do
         post :create, {:account => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+        expect(response).to redirect_to(configure_accounts_path)
       end
     end
   end

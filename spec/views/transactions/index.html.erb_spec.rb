@@ -7,18 +7,8 @@ RSpec.describe "transactions/index", :type => :view do
     @account2 = create(:account2)
 
     assign(:transactions, [
-      Transaction.create!(
-        :user_id => user.id,
-        :debit_id => @account1.id,
-        :credit_id => @account2.id,
-        :amount => "9.99"
-      ),
-      Transaction.create!(
-        :user_id => user.id,
-        :debit_id => @account1.id,
-        :credit_id => @account2.id,
-        :amount => "9.99"
-      )
+        create(:transaction1,debit_id: @account1.id,credit_id: @account2.id),
+        create(:transaction2,debit_id: @account2.id, credit_id: @account1.id)
     ])
     assign(:transaction, Transaction.new)
   end

@@ -38,6 +38,7 @@ RSpec.describe TransactionsController, :type => :controller do
       user_id: user.id,
       debit_id: account1.id,
       credit_id: account2.id,
+      time: Time.now,
       amount: "9.99"
     }
   }
