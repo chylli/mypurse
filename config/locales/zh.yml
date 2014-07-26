@@ -35,4 +35,9 @@ zh:
   'Clothes & Accessories': '衣服饰品' 
   Categories: 类别
   Accounting: 记账
+  date:
+    order:
+      - year
+      - month
+      - day
 
