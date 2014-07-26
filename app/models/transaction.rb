@@ -7,6 +7,7 @@ class Transaction < ActiveRecord::Base
   belongs_to :debit, class_name: "Account"
   belongs_to :credit, class_name: "Account"
   #TODO validate debit credit have real object and belongs to the user
+  #TODO set default time
 
   after_create :recalculate_accounts
   after_update :recalculate_accounts

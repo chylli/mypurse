@@ -8,6 +8,10 @@
         - @transaction.errors.full_messages.each do |message|
           %li= message
   .field
+    = f.label :time
+    %br/
+    = f.datetime :time
+  .field
     = f.label :debit_id
     %br/
     = collection_select :transaction, :debit_id, @user.accounts, :id, :name
