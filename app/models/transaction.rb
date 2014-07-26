@@ -3,6 +3,7 @@ class Transaction < ActiveRecord::Base
   validates :credit_id, presence: true  
   validates :amount, presence: true  
   validates :user_id, presence: true
+  validates :time, presence: true
   belongs_to :user
   belongs_to :debit, class_name: "Account"
   belongs_to :credit, class_name: "Account"
