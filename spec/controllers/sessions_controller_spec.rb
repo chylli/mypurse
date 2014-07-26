@@ -15,7 +15,7 @@ RSpec.describe SessionsController, :type => :controller do
   describe "POST 'create'" do
     it "returns http success" do
       post 'create', valid_attributes
-      expect(response).to redirect_to(root_url)
+      expect(response).to redirect_to(reports_property_path)
       expect(session[:user_id]).to eq(user.id)
     end
   end
