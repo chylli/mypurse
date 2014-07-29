@@ -82,7 +82,7 @@ RSpec.describe CategoriesController, :type => :controller do
       it "creates a new Category" do
         expect {
           post :create, {:category => valid_attributes2}, valid_session
-        }.to change(Category, :count).by(12)
+        }.to change(Category, :count).by(11)
       end
 
       it "assigns a newly created category as @category" do

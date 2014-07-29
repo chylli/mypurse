@@ -43,7 +43,7 @@ RSpec.describe ConfigureController, :type => :controller do
     end
     it "set ordered account categoires" do
       get 'accounts', {}, valid_session
-      expect(assigns[:categories].map(&:name)).to eq(["Accounts", "Liability Center", "Credit Card", "Property Center", "Bank Center", "Demand Deposit", "Cash"])
+      expect(assigns[:categories].map(&:name)).to eq(["Liability Center", "Credit Card", "Property Center", "Bank Center", "Demand Deposit", "Cash"])
     end
     it "return all accounts if no category_id" do
       get 'accounts', {}, valid_session

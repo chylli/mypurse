@@ -21,7 +21,7 @@ RSpec.describe User, :type => :model do
     user1 = create(:user1)
     expect(user1.currencies.size).to eq(2)
     #expect(user1.earning_accounts.size).to eq(2)
-    expect(user1.categories.size).to eq(11)
+    expect(user1.categories.size).to eq(10)
   end
   
 
