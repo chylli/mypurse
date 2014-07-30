@@ -17,18 +17,20 @@ class ConfigureController < ApplicationController
 
   def accounts
     @accounts = []
+    @account = Account.new(user_id: @user.id, currency_id: @user.currency_id)
     if params[:category_id]
-      root_category = Category.find(params[:category_id])
+      category_id = params[:category_id].to_i
+      root_category = Category.find(category_id)
       @accounts = build_accounts_by_tree(root_category)
+      @account.category_id = category_id
     else
       @accounts = @user.accounts
     end
 
     @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
 
-    @account = Account.new(user_id: @user.id, currency_id: @user.currency_id)
 
-    #FIXME the account form's default category is not correct
+
   end
 
   private

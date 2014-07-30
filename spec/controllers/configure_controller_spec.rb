@@ -57,6 +57,7 @@ RSpec.describe ConfigureController, :type => :controller do
       get 'accounts', {:category_id => category1.id }, valid_session
       expect(assigns[:accounts].size).to eq(2)      
       get 'accounts', {:category_id => category2.id }, valid_session
+      expect(assigns[:account].category_id).to eq(category2.id)
     end
   end
 end
