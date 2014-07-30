@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
     #self.earning_accounts.create(name: "earning", description: "earning", balance: "0.00")
     #self.expense_accounts.create(name: "expense", description: "expense", balance: "0.00")
     property_center = self.account_categories.create!(name: I18n.t("Property Center"), description: I18n.t("Property Center"), default_account_type: "DemandAccount")
-    cash_category = self.account_categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)
+    self.account_categories.create!(name: I18n.t("Cash"), description: I18n.t("Cash"), default_account_type: "CashAccount", parent_id: property_center.id)
     bank_center = self.account_categories.create!(name: I18n.t("Bank Center"), description: I18n.t("Bank Center"), default_account_type: "DemandAccount", parent_id: property_center.id)
     self.account_categories.create!(name: I18n.t("Demand Deposit"), description: I18n.t("Demand Deposit"), default_account_type: "DemandAccount", parent_id: bank_center.id)
     liability_center = self.account_categories.create!(name: I18n.t("Liability Center"), description: I18n.t("Liability Center"), default_account_type: "CreditCardAccount")

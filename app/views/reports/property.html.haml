@@ -1,2 +1,9 @@
-%h1 Reports#property
-%p Find me in app/views/reports/property.html.haml
+.row
+  %h1 Property Report
+.row
+  #highchart-container{style: "width:100%; height:400px;"}
+.row
+  .col-sm-3.col-md-2.category-sidebar
+    = nested_categories @property_center.subtree.arrange(:order => :name), "reports/category"
+
+%script= render 'property_pie.js'
