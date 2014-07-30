@@ -28,6 +28,7 @@ class ConfigureController < ApplicationController
 
     @account = Account.new(user_id: @user.id, currency_id: @user.currency_id)
 
+    #FIXME the account form's default category is not correct
   end
 
   private
