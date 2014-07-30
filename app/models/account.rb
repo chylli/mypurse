@@ -28,15 +28,21 @@ class Account < ActiveRecord::Base
     types.map {|option| [option,option]}
   end
 
+  before_save :recalculate_balance
 
   #TODO validate default value
 
 
-  def recalculate_balance
-    self.balance = self.init_balance + self.credit_transactions.sum('amount') - self.debit_transactions.sum('amount')
-    self.save!
+  def recalculate_balance!
+    #it will call recalculate_balance before save
+    save!
   end
 
+  private
+
+  def recalculate_balance
+    self.balance = self.init_balance + self.credit_transactions.sum('amount') - self.debit_transactions.sum('amount')
+  end
 
   
 end

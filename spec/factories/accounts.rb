@@ -7,7 +7,7 @@ FactoryGirl.define do
     description "MyString"
     type "DemandAccount"
     currency_id 1
-    balance "0.00"
+    init_balance "100.00"
   end
 
   factory :account2, class: Account do

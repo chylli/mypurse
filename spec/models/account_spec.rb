@@ -16,5 +16,14 @@ RSpec.describe Account, :type => :model do
     expect(options).not_to include('EarningAccount') 
     expect(options).not_to include('ExpenseAccount') 
   end
+  it 'should recalculat_balance before update & create' do
+    account1 = create(:account1)
+    account1.reload
+    expect(account1.balance).to eq(account1.init_balance)
+    new_balance = account1.init_balance - 1
+    account1.update(init_balance: new_balance)
+    account1.reload
+    expect(account1.balance).to eq(new_balance)
+  end
 
 end

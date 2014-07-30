@@ -17,8 +17,8 @@ class Transaction < ActiveRecord::Base
   private
 
   def recalculate_accounts
-    self.debit.recalculate_balance
-    self.credit.recalculate_balance
+    self.debit.recalculate_balance!
+    self.credit.recalculate_balance!
   end
 
 

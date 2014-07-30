@@ -9,7 +9,7 @@ RSpec.describe "accounts/index", :type => :view do
         :description => "Description",
         :category_id => "Category",
         :type => 'EarningAccount',
-        :balance => "9.99",
+        :init_balance => "9.99",
         :currency_id => 1
       ),
       Account.create!(
@@ -18,7 +18,7 @@ RSpec.describe "accounts/index", :type => :view do
         :description => "Description",
         :category_id => "Category",
         :type => 'EarningAccount',
-        :balance => "9.99",
+        :init_balance => "9.99",
         :currency_id => 1
       )
     ])

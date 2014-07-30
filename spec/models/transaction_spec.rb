@@ -20,7 +20,7 @@ RSpec.describe Transaction, :type => :model do
       it 'will recaculate the balance of relative accounts' do
         @account1.reload
         @account2.reload
-        expect(@account1.balance).to eq(-9.99)
+        expect(@account1.balance).to eq(BigDecimal.new('90.01'))
         expect(@account2.balance).to eq(9.99)
       end
     end
@@ -31,7 +31,7 @@ RSpec.describe Transaction, :type => :model do
         @transaction.save
         @account1.reload
         @account2.reload
-        expect(@account1.balance).to eq(-2)
+        expect(@account1.balance).to eq(98.0)
         expect(@account2.balance).to eq(2)
       end
     end
@@ -40,7 +40,7 @@ RSpec.describe Transaction, :type => :model do
         @transaction.destroy
         @account1.reload
         @account2.reload
-        expect(@account1.balance).to eq(0)
+        expect(@account1.balance).to eq(100.0)
         expect(@account2.balance).to eq(0)
       end
     end
