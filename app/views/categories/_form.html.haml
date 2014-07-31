@@ -19,5 +19,9 @@
     = f.label :parent_id
     %br/
     = f.number_field :parent_id
+  .field
+    = f.label :type
+    %br/
+    = f.select :type, Category.types_select_option
   .actions
     = f.submit

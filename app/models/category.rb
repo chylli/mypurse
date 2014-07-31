@@ -15,6 +15,10 @@ class Category < ActiveRecord::Base
     }.call(t)
   end
 
+  def self.types_select_option
+    TYPES.map {|option| [option,option]}
+  end
+
 
   after_create :setup_earning_expense_accounts
   #TODO should limit the parent row to be the same user
