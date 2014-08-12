@@ -7,6 +7,7 @@ RSpec.describe "categories/edit", :type => :view do
       :name => "MyString",
       :description => "MyString",
     ))
+    assign(:categories,[])
   end
 
   it "renders the edit category form" do

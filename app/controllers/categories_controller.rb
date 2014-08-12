@@ -21,6 +21,7 @@ class CategoriesController < ApplicationController
 
   # GET /Categories/1/edit
   def edit
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
   end
 
   # POST /Categories
@@ -48,6 +49,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
+        @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
