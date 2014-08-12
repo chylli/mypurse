@@ -75,7 +75,8 @@ class CategoriesController < ApplicationController
     #TODO test user_id is filted
     # Never trust parameters from the scary internet, only allow the white list through.
     def category_params
-      params.require(@type.underscore.to_sym).permit(:name, :description, :parent_id)
+      #params.require(@type.underscore.to_sym).permit(:name, :description, :parent_id)
+      params.require(:category).permit(:name, :description, :parent_id)
     end
 
     def set_type

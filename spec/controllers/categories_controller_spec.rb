@@ -81,31 +81,31 @@ RSpec.describe CategoriesController, :type => :controller do
     describe "with valid params" do
       it "creates a new Category" do
         expect {
-          post :create, {:account_category => valid_attributes2,:type => 'AccountType'}, valid_session
+          post :create, {:category => valid_attributes2,:type => 'AccountType'}, valid_session
         }.to change(Category, :count).by(11)
       end
 
       it "assigns a newly created category as @category" do
-        post :create, {:account_category => valid_attributes2,:type => 'AccountType'}, valid_session
+        post :create, {:category => valid_attributes2,:type => 'AccountType'}, valid_session
         expect(assigns(:category)).to be_a(Category)
         expect(assigns(:category)).to be_persisted
         expect(assigns(:category).user_id).to eq(user.id)
       end
 
       it "redirects to the created category" do
-        post :create, {:account_category => valid_attributes2, :type => 'AccountType'}, valid_session
+        post :create, {:category => valid_attributes2, :type => 'AccountType'}, valid_session
         expect(response).to redirect_to(Category.last)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved category as @category" do
-        post :create, {:account_category => invalid_attributes, :type => 'AccountType'}, valid_session
+        post :create, {:category => invalid_attributes, :type => 'AccountType'}, valid_session
         expect(assigns(:category)).to be_a_new(Category)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:account_category => invalid_attributes, :type => 'AccountType'}, valid_session
+        post :create, {:category => invalid_attributes, :type => 'AccountType'}, valid_session
         expect(response).to render_template("new")
       end
     end
@@ -119,20 +119,20 @@ RSpec.describe CategoriesController, :type => :controller do
 
       it "updates the requested category" do
         account_category = Category.create! valid_attributes
-        put :update, {:id => account_category.to_param, :account_category => new_attributes,:type => 'AccountCategory'}, valid_session
+        put :update, {:id => account_category.to_param, :category => new_attributes,:type => 'AccountCategory'}, valid_session
         account_category.reload
         expect(account_category.name).to eq("name2")
       end
 
       it "assigns the requested category as @category" do
         account_category = Category.create! valid_attributes
-        put :update, {:id => account_category.to_param, :account_category => valid_attributes, :type => 'AccountType'}, valid_session
+        put :update, {:id => account_category.to_param, :category => valid_attributes, :type => 'AccountType'}, valid_session
         expect(assigns(:category)).to eq(account_category)
       end
 
       it "redirects to the category" do
         account_category = Category.create! valid_attributes
-        put :update, {:id => account_category.to_param, :account_category => valid_attributes, :type => 'AccountType'}, valid_session
+        put :update, {:id => account_category.to_param, :category => valid_attributes, :type => 'AccountType'}, valid_session
         expect(response).to redirect_to(account_category)
       end
     end
@@ -140,13 +140,13 @@ RSpec.describe CategoriesController, :type => :controller do
     describe "with invalid params" do
       it "assigns the category as @category" do
         account_category = Category.create! valid_attributes
-        put :update, {:id => account_category.to_param, :account_category => invalid_attributes, type: 'AccountType'}, valid_session
+        put :update, {:id => account_category.to_param, :category => invalid_attributes, type: 'AccountType'}, valid_session
         expect(assigns(:category)).to eq(account_category)
       end
 
       it "re-renders the 'edit' template" do
         account_category = Category.create! valid_attributes
-        put :update, {:id => account_category.to_param, :account_category => invalid_attributes, :type => 'AccountType'}, valid_session
+        put :update, {:id => account_category.to_param, :category => invalid_attributes, :type => 'AccountType'}, valid_session
         expect(response).to render_template("edit")
       end
     end

@@ -13,6 +13,8 @@ class ConfigureController < ApplicationController
 
   #TODO test active class in haml
   def categories
+    @category = @user.account_categories.new
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.categories.arrange(:order => 'name'))
   end
 
   def accounts
