@@ -6,7 +6,7 @@ RSpec.describe "categories/new", :type => :view do
       :user_id => 1,
       :name => "MyString",
       :description => "MyString",
-      :type => 'AccountCategory'
+      :type => 'PropertyCategory'
     ))
     assign(:categories, [])
   end
@@ -14,13 +14,13 @@ RSpec.describe "categories/new", :type => :view do
   it "renders new category form" do
     render
 
-    assert_select "form[action=?][method=?]", account_categories_path, "post" do
+    assert_select "form[action=?][method=?]", property_categories_path, "post" do
 
-      assert_select "input#account_category_name[name=?]", "account_category[name]"
+      assert_select "input#property_category_name[name=?]", "property_category[name]"
 
-      assert_select "input#account_category_description[name=?]", "account_category[description]"
+      assert_select "input#property_category_description[name=?]", "property_category[description]"
 
-      assert_select "select#account_category_parent_id[name=?]", "account_category[parent_id]"
+      assert_select "select#property_category_parent_id[name=?]", "property_category[parent_id]"
     end
   end
 end

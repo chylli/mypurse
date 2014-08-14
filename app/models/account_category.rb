@@ -1,3 +1,0 @@
-class AccountCategory < Category
-
-end

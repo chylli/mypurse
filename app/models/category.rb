@@ -1,5 +1,5 @@
 class Category < ActiveRecord::Base
-  TYPES = %w(AccountCategory EarningCategory ExpenseCategory)
+  TYPES = %w(PropertyCategory LiabilityCategory EarningCategory ExpenseCategory)
 
   has_ancestry orphan_strategy: :adopt
   validates :name, presence: true, length: {maximum:32}

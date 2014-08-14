@@ -1,0 +1,7 @@
+%h1.page-header
+  = t("Property Categories")
+
+= nested_categories @user.property_categories.arrange(:order => :name), "categories/category"
+
+%h2 New Category
+= render "configure/category_form"

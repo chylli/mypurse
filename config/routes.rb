@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   #TODO delete this route
   get 'configure/categories'
   get 'configure', to: 'configure#index'
-  get 'configure/account_categories'
+  get 'configure/property_categories'
   get 'configure/accounts'
 
   resources :transactions do
@@ -38,7 +38,8 @@ Rails.application.routes.draw do
   resources :categories
 
   # for Category STI
-  resources :account_categories, controller: 'categories', type: 'AccountCategory'
+  resources :property_categories, controller: 'categories', type: 'PropertyCategory'
+  resources :liability_categories, controller: 'categories', type: 'LiabilityCategory'
   resources :earning_categories, controller: 'categories', type: 'EarningCategory'
   resources :expense_categories, controller: 'categories', type: 'ExpenseCategory'
 

@@ -21,7 +21,7 @@ class CategoriesController < ApplicationController
 
   # GET /Categories/1/edit
   def edit
-    @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.property_categories.arrange(:order => 'name'))
   end
 
   # POST /Categories
@@ -49,7 +49,7 @@ class CategoriesController < ApplicationController
         format.html { redirect_to @category, notice: 'Category was successfully updated.' }
         format.json { render :show, status: :ok, location: @category }
       else
-        @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
+        @categories = Category.arrange_as_array({:order => 'name'}, @user.property_categories.arrange(:order => 'name'))
         format.html { render :edit }
         format.json { render json: @category.errors, status: :unprocessable_entity }
       end
@@ -84,7 +84,7 @@ class CategoriesController < ApplicationController
     end
 
     def type
-      Category::TYPES.include?(params[:type]) ? params[:type] : "AccountCategory"
+      Category::TYPES.include?(params[:type]) ? params[:type] : "PropertyCategory"
     end
 
     def type_class

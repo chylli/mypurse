@@ -5,7 +5,7 @@ FactoryGirl.define do
     name
     user_id 1
     description "MyString"
-    type 'AccountCategory'
+    type 'PropertyCategory'
     default_account_type "CashAccount"
   end
 
@@ -13,7 +13,7 @@ FactoryGirl.define do
     name
     user_id 1
     description "MyString"
-    type 'AccountCategory'
+    type 'PropertyCategory'
     default_account_type "CashAccount"
   end
 end

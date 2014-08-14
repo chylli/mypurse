@@ -43,14 +43,14 @@ RSpec.describe ConfigureController, :type => :controller do
     end
   end
 
-  describe 'GET account categories' do
+  describe 'GET property categories' do
     it "return http success" do
-      get 'account_categories',{}, valid_session
+      get 'property_categories',{}, valid_session
       expect(response).to be_success
-      expect(response).to render_template("account_categories")
+      expect(response).to render_template("property_categories")
     end
     it "assign category and categories" do
-      get 'account_categories',{}, valid_session
+      get 'property_categories',{}, valid_session
       expect(assigns[:category]).to be_truthy
       expect(assigns[:categories]).to be_truthy
     end
@@ -63,9 +63,9 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(response).to be_success
       expect(response).to render_template("accounts")
     end
-    it "set ordered account categoires" do
+    it "set ordered property categoires" do
       get 'accounts', {}, valid_session
-      expect(assigns[:categories].map(&:name)).to eq(["Liability Center", "Credit Card", "Property Center", "Bank Center", "Demand Deposit", "Cash"])
+      expect(assigns[:categories].map(&:name)).to eq(["Property Center", "Bank Center", "Demand Deposit", "Cash"])
     end
     it "return all accounts if no category_id" do
       get 'accounts', {}, valid_session

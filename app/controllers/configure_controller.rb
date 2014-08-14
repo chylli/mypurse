@@ -22,13 +22,13 @@ class ConfigureController < ApplicationController
   #TODO test active class in haml
   #TODO remove it
   def categories
-    @category = @user.account_categories.new
-    @categories = Category.arrange_as_array({:order => 'name'}, @user.categories.arrange(:order => 'name'))
+    @category = @user.property_categories.new
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.property_categories.arrange(:order => 'name'))
   end
 
-  def account_categories
-    @category = @user.account_categories.new
-    @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
+  def property_categories
+    @category = @user.property_categories.new
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.property_categories.arrange(:order => 'name'))
   end
   
 
@@ -44,7 +44,7 @@ class ConfigureController < ApplicationController
       @accounts = @user.accounts
     end
 
-    @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.property_categories.arrange(:order => 'name'))
   end
 
   private

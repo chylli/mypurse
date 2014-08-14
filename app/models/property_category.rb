@@ -1,0 +1,4 @@
+class PropertyCategory < Category
+
+end
+

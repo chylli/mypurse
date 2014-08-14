@@ -1,0 +1,4 @@
+class LiabilityCategory < Category
+
+end
+

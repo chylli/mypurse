@@ -1,6 +1,6 @@
 class ReportsController < ApplicationController
   def property
-    @property_center = AccountCategory.find_by! name: I18n.t('Property Center')
+    @property_center = PropertyCategory.find_by! name: I18n.t('Property Center')
     @accounts = get_accounts_of_categories(@property_center).sort {|a,b| a.name <=> b.name}
   end
 
