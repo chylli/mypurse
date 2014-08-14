@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   get 'configure/language'
   patch 'configure/update_language'
 
+  #TODO delete this route
   get 'configure/categories'
+  get 'configure', to: 'configure#index'
+  get 'configure/account_categories'
   get 'configure/accounts'
 
   resources :transactions do

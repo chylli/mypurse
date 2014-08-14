@@ -18,3 +18,13 @@ Feature: Configure flow
     And I fill the 'Name' with 'test account'
     And I click the 'Create Account' button
     Then it will display 'test account'
+
+  @wip
+  Scenario: create account category
+    When I signed in with a valid user
+    And I visit the configure page
+    And I click the link 'Account Categories'
+    And I fill the 'Name' with 'test category'
+    And I click the 'Create Category' button
+    Then it will display 'test category'
+

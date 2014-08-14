@@ -1,7 +1,15 @@
 class ConfigureController < ApplicationController
+
+  def index
+    respond_to do |format|
+      #TODO redirect to account categories
+      format.html { redirect_to configure_categories_path }
+    end
+  end
+
   def language
   end
-  
+
   def update_language
     @user.language = params[:user][:language]
     respond_to do |format|
