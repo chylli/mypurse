@@ -9,6 +9,13 @@ RSpec.describe ConfigureController, :type => :controller do
 
   let(:valid_session) { {user_id: user.to_param} }
 
+  describe "Get 'index'" do
+    it "redirect to account categories" do
+      get 'index', {}, valid_session
+      expect(response).to redirect_to(configure_categories_path)
+    end
+  end
+
   describe "GET 'language'" do
     it "returns http success" do
       get 'language', {}, valid_session
@@ -26,7 +33,8 @@ RSpec.describe ConfigureController, :type => :controller do
     end
 
   end
-
+  
+  #TODO remove it
   describe 'GET categories' do
     it "return http success" do
       get 'categories',{}, valid_session
@@ -34,6 +42,20 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(response).to render_template("categories")
     end
   end
+
+  describe 'GET account categories' do
+    it "return http success" do
+      get 'account_categories',{}, valid_session
+      expect(response).to be_success
+      expect(response).to render_template("account_categories")
+    end
+    it "assign category and categories" do
+      get 'account_categories',{}, valid_session
+      expect(assigns[:category]).to be_truthy
+      expect(assigns[:categories]).to be_truthy
+    end
+  end
+  
 
   describe 'Get  accounts' do
     it "return http success" do

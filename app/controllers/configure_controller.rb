@@ -20,10 +20,17 @@ class ConfigureController < ApplicationController
   end
 
   #TODO test active class in haml
+  #TODO remove it
   def categories
     @category = @user.account_categories.new
     @categories = Category.arrange_as_array({:order => 'name'}, @user.categories.arrange(:order => 'name'))
   end
+
+  def account_categories
+    @category = @user.account_categories.new
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
+  end
+  
 
   def accounts
     @accounts = []
@@ -38,9 +45,6 @@ class ConfigureController < ApplicationController
     end
 
     @categories = Category.arrange_as_array({:order => 'name'}, @user.account_categories.arrange(:order => 'name'))
-
-
-
   end
 
   private

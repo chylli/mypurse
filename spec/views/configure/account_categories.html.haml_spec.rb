@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'configure/categories.html.haml', type: :view do
+describe 'configure/account_categories.html.haml', type: :view do
 
   it 'should can be rendered' do
     user = create(:user1)
