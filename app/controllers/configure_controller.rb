@@ -3,7 +3,7 @@ class ConfigureController < ApplicationController
   def index
     respond_to do |format|
       #TODO redirect to account categories
-      format.html { redirect_to configure_categories_path }
+      format.html { redirect_to configure_property_categories_path }
     end
   end
 
@@ -23,6 +23,11 @@ class ConfigureController < ApplicationController
   def property_categories
     @category = @user.property_categories.new
     @categories = Category.arrange_as_array({:order => 'name'}, @user.property_categories.arrange(:order => 'name'))
+  end
+
+  def liability_categories
+    @category = @user.liability_categories.new
+    @categories = Category.arrange_as_array({:order => 'name'}, @user.liability_categories.arrange(:order => 'name'))
   end
   
 

@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'configure/categories'
   get 'configure', to: 'configure#index'
   get 'configure/property_categories'
+  get 'configure/liability_categories'
   get 'configure/accounts'
 
   resources :transactions do

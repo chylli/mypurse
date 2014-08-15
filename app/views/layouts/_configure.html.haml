@@ -5,6 +5,8 @@
         %a{:href => configure_language_path}= t("Language")
       %li{ class: action_name == 'property_categories' ? "active" : ""}
         %a{:href => configure_property_categories_path}= "Property Categories"
+      %li{ class: action_name == 'liability_categories' ? "active" : ""}
+        %a{:href => configure_liability_categories_path}= "Liability Categories"
       %li{ class: action_name == 'accounts' ? "active" :""}
         %a{:href => configure_accounts_path}= t("Accounts")
       %li

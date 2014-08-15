@@ -12,7 +12,7 @@ RSpec.describe ConfigureController, :type => :controller do
   describe "Get 'index'" do
     it "redirect to account categories" do
       get 'index', {}, valid_session
-      expect(response).to redirect_to(configure_categories_path)
+      expect(response).to redirect_to(configure_property_categories_path)
     end
   end
 
@@ -44,6 +44,21 @@ RSpec.describe ConfigureController, :type => :controller do
     it "assign category and categories" do
       get 'property_categories',{}, valid_session
       expect(assigns[:category]).to be_truthy
+      expect(assigns[:category].type).to eq('PropertyCategory')
+      expect(assigns[:categories]).to be_truthy
+    end
+  end
+
+  describe 'GET liability categories' do
+    it "return http success" do
+      get 'liability_categories',{}, valid_session
+      expect(response).to be_success
+      expect(response).to render_template("liability_categories")
+    end
+    it "assign category and categories" do
+      get 'liability_categories',{}, valid_session
+      expect(assigns[:category]).to be_truthy
+      expect(assigns[:category].type).to eq('LiabilityCategory')
       expect(assigns[:categories]).to be_truthy
     end
   end
