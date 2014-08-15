@@ -34,14 +34,6 @@ RSpec.describe ConfigureController, :type => :controller do
 
   end
   
-  #TODO remove it
-  describe 'GET categories' do
-    it "return http success" do
-      get 'categories',{}, valid_session
-      expect(response).to be_success
-      expect(response).to render_template("categories")
-    end
-  end
 
   describe 'GET property categories' do
     it "return http success" do

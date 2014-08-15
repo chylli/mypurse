@@ -19,12 +19,6 @@ class ConfigureController < ApplicationController
     end
   end
 
-  #TODO test active class in haml
-  #TODO remove it
-  def categories
-    @category = @user.property_categories.new
-    @categories = Category.arrange_as_array({:order => 'name'}, @user.property_categories.arrange(:order => 'name'))
-  end
 
   def property_categories
     @category = @user.property_categories.new
