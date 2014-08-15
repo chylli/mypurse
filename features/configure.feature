@@ -19,11 +19,19 @@ Feature: Configure flow
     And I click the 'Create Account' button
     Then it will display 'test account'
 
-  @wip
-  Scenario: create account category
+  Scenario: create property category
     When I signed in with a valid user
     And I visit the configure page
     And I click the link 'Property Categories'
+    And I fill the 'Name' with 'test category'
+    And I click the 'Create Category' button
+    Then it will display 'test category'
+
+  @wip
+  Scenario: create liability category
+    When I signed in with a valid user
+    And I visit the configure page
+    And I click the link 'Liability Categories'
     And I fill the 'Name' with 'test category'
     And I click the 'Create Category' button
     Then it will display 'test category'
