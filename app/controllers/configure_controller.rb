@@ -19,6 +19,14 @@ class ConfigureController < ApplicationController
     end
   end
 
+  def categories
+    @type = params[:category_type]
+    type_class = @type.constantize
+    @type_pluralize = @type.underscore.pluralize
+    @category = type_class.new(user_id: @user.id)
+    @categories = @user.send @type_pluralize
+    @categories = Category.arrange_as_array({:order => 'name'}, @categories.arrange(:order => 'name'))
+  end
 
   def property_categories
     @category = @user.property_categories.new

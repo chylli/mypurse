@@ -1,7 +1,7 @@
 %h1.page-header
-  = t("Property Categories")
+  = @type_pluralize.humanize
 
 = nested_categories @user.property_categories.arrange(:order => :name), "categories/category"
 
-%h2 New Category
+%h2= "New #{@type.underscore}".humanize
 = render "configure/category_form"

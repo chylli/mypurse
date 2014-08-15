@@ -37,12 +37,12 @@ RSpec.describe ConfigureController, :type => :controller do
 
   describe 'GET property categories' do
     it "return http success" do
-      get 'property_categories',{}, valid_session
+      get 'categories',{category_type: 'PropertyCategory'}, valid_session
       expect(response).to be_success
-      expect(response).to render_template("property_categories")
+      expect(response).to render_template("categories")
     end
     it "assign category and categories" do
-      get 'property_categories',{}, valid_session
+      get 'categories',{category_type: 'PropertyCategory'}, valid_session
       expect(assigns[:category]).to be_truthy
       expect(assigns[:category].type).to eq('PropertyCategory')
       expect(assigns[:categories]).to be_truthy
@@ -51,12 +51,12 @@ RSpec.describe ConfigureController, :type => :controller do
 
   describe 'GET liability categories' do
     it "return http success" do
-      get 'liability_categories',{}, valid_session
+      get 'categories',{category_type: 'LiabilityCategory'}, valid_session
       expect(response).to be_success
-      expect(response).to render_template("liability_categories")
+      expect(response).to render_template("categories")
     end
     it "assign category and categories" do
-      get 'liability_categories',{}, valid_session
+      get 'categories',{category_type: 'LiabilityCategory'}, valid_session
       expect(assigns[:category]).to be_truthy
       expect(assigns[:category].type).to eq('LiabilityCategory')
       expect(assigns[:categories]).to be_truthy

@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   #TODO delete this route
   get 'configure/categories'
   get 'configure', to: 'configure#index'
-  get 'configure/property_categories'
-  get 'configure/liability_categories'
+  get 'configure/property_categories', to: 'configure#categories', category_type: 'PropertyCategory'
+  get 'configure/liability_categories', to: 'configure#categories', category_type: 'LiabilityCategory'
   get 'configure/accounts'
 
   resources :transactions do
