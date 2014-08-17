@@ -60,6 +60,7 @@ RSpec.describe ConfigureController, :type => :controller do
       expect(assigns[:category]).to be_truthy
       expect(assigns[:category].type).to eq('LiabilityCategory')
       expect(assigns[:categories]).to be_truthy
+      expect(assigns[:categories_select][0].name).to eq('Liability Center')
     end
   end
   

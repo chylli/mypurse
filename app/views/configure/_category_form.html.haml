@@ -18,6 +18,6 @@
   .field
     = f.label :parent_id
     %br/
-    = f.collection_select :parent_id, @categories, :id, :name_for_selects
+    = f.collection_select :parent_id, @categories_select, :id, :name_for_selects
   .actions
     = f.submit

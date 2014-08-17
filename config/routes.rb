@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   patch 'configure/update_language'
 
   #TODO delete this route
-  get 'configure/categories'
   get 'configure', to: 'configure#index'
   get 'configure/property_categories', to: 'configure#categories', category_type: 'PropertyCategory'
   get 'configure/liability_categories', to: 'configure#categories', category_type: 'LiabilityCategory'

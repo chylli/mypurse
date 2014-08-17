@@ -6,7 +6,9 @@ describe 'configure/categories.html.haml', type: :view do
     user = create(:user1)
     assign(:user, user)
     assign(:category, user.liability_categories.new)
-    assign(:categories, Category.arrange_as_array({:order => 'name'}, user.categories.arrange(:order => 'name')))
+    categories = Category.arrange_as_array({:order => 'name'}, user.categories.arrange(:order => 'name'))
+    assign(:categories, categories)
+    assign(:categories_select, Category.arrange_as_array({:order => 'name'}, @categories))
     assign(:type_pluralize, "liability_categories")
     assign(:type, "LiabilityCategory")
     render

@@ -24,8 +24,8 @@ class ConfigureController < ApplicationController
     type_class = @type.constantize
     @type_pluralize = @type.underscore.pluralize
     @category = type_class.new(user_id: @user.id)
-    @categories = @user.send @type_pluralize
-    @categories = Category.arrange_as_array({:order => 'name'}, @categories.arrange(:order => 'name'))
+    @categories = (@user.send @type_pluralize).arrange(:order => 'name')
+    @categories_select = Category.arrange_as_array({:order => 'name'}, @categories)
   end
 
   def accounts
