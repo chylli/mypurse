@@ -24,14 +24,17 @@ Feature: Configure flow
     And I visit the configure page
     And I click the link 'Property Categories'
     And I fill the 'Name' with 'test category'
+    And I select the 'Parent' with 'Property Center'
     And I click the 'Create Property category' button
     Then it will display 'test category'
+    And it will display 'Parent: Property Center'
 
   Scenario: create liability category
     When I signed in with a valid user
     And I visit the configure page
     And I click the link 'Liability Categories'
     And I fill the 'Name' with 'test category'
+    And I select the 'Parent' with 'Liability Center'
     And I click the 'Create Liability category' button
     Then it will display 'test category'
-
+    And it will display 'Parent: Liability Center'

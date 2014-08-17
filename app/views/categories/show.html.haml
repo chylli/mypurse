@@ -1,8 +1,5 @@
 %p#notice= notice
 %p
-  %strong User:
-  = @category.user_id
-%p
   %strong Name:
   = @category.name
 %p
@@ -10,7 +7,7 @@
   = @category.description
 %p
   %strong Parent:
-  = @category.parent_id
+  = @category.parent.name if @category.parent
 = link_to 'Edit', edit_category_path(@category)
 |
 \#{link_to 'Back', categories_path}
