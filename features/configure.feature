@@ -38,3 +38,22 @@ Feature: Configure flow
     And I click the 'Create Liability category' button
     Then it will display 'test category'
     And it will display 'Parent: Liability Center'
+
+  Scenario: create earning category
+    When I signed in with a valid user
+    And I visit the configure page
+    And I click the link 'Earning Categories'
+    And I fill the 'Name' with 'test category'
+    And I select the 'Parent' with 'Earning'
+    And I click the 'Create Earning category' button
+    Then it will display 'test category'
+    And it will display 'Parent: Earning'
+  Scenario: create Expense category
+    When I signed in with a valid user
+    And I visit the configure page
+    And I click the link 'Expense Categories'
+    And I fill the 'Name' with 'test category'
+    And I select the 'Parent' with 'Expense'
+    And I click the 'Create Expense category' button
+    Then it will display 'test category'
+    And it will display 'Parent: Expense'

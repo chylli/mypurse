@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get 'configure', to: 'configure#index'
   get 'configure/property_categories', to: 'configure#categories', category_type: 'PropertyCategory'
   get 'configure/liability_categories', to: 'configure#categories', category_type: 'LiabilityCategory'
+  get 'configure/earning_categories', to: 'configure#categories', category_type: 'EarningCategory'
+  get 'configure/expense_categories', to: 'configure#categories', category_type: 'ExpenseCategory'
+
   get 'configure/accounts'
 
   resources :transactions do
