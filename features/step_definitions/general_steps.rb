@@ -34,3 +34,8 @@ end
 When(/^I select the '(.*)' with '(.*)'/) do |field_name, field_value|
   select field_value, from: field_name
 end
+
+When(/^I go back$/) do
+  visit page.driver.request.env['HTTP_REFERER']
+  #page.evaluate_script('window.history.back()')
+end

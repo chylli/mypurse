@@ -29,7 +29,7 @@ $(function () {
             name: 'Porpert Report',
             data: [
 						<% @accounts.each do |account| %>
-               ['<%= account.name %>', <%= account.balance %>],
+               ['<%= account.name %>', <%= account.exchanged_balance %>],
   			    <% end %>
             ]
         }]

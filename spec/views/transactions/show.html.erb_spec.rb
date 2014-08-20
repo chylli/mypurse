@@ -11,15 +11,15 @@ RSpec.describe "transactions/show", :type => :view do
       :debit_id => @account1.id,
       :credit_id => @account2.id,
       :time => Time.now,
-      :amount => "9.99"
+      :debit_amount => "9.99",
+      :credit_amount => "9.99"
     ))
   end
 
   it "renders attributes in <p>" do
     render
-    expect(rendered).to match(/#{@user.id}/)
-    expect(rendered).to match(/#{@account1.id}/)
-    expect(rendered).to match(/#{@account2.id}/)
+    expect(rendered).to match(/#{@account1.name}/)
+    expect(rendered).to match(/#{@account2.name}/)
     expect(rendered).to match(/9.99/)
   end
 end

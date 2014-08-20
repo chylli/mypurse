@@ -88,6 +88,6 @@ class TransactionsController < ApplicationController
     # TODO test user_id is not permit
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:category_id, :debit_id, :credit_id, :amount, :time)
+      params.require(:transaction).permit(:category_id, :debit_id, :credit_id, :credit_amount, :debit_amount, :time)
     end
 end

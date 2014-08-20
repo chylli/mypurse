@@ -14,6 +14,10 @@ class Account < ActiveRecord::Base
   has_many :debit_transactions, foreign_key: "debit_id", class_name: "Transaction"
   has_many :credit_transactions, foreign_key: "credit_id", class_name: "Transaction"
 
+  def exchanged_balance
+    balance * currency.exchange_rate
+  end
+
   for t in TYPES
     lambda { |t2|
       scope t2.underscore.pluralize.to_sym, -> {where(type: t2)}
@@ -41,7 +45,7 @@ class Account < ActiveRecord::Base
   private
 
   def recalculate_balance
-    self.balance = self.init_balance + self.credit_transactions.sum('amount') - self.debit_transactions.sum('amount')
+    self.balance = self.init_balance + self.credit_transactions.sum('credit_amount') - self.debit_transactions.sum('debit_amount')
   end
 
   

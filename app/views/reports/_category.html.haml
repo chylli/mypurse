@@ -1,5 +1,5 @@
-%div= category.name + " " + category.accounts.sum(:balance).to_s
+%div= category.name + " " + category.sum_balance.to_s
 - category.accounts.each do |account|
   %div.nested_categories
-    %div= account.name + " " + account.balance.to_s
+    %div= account.name + " " + account.exchanged_balance.to_s
 

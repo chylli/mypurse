@@ -39,7 +39,8 @@ RSpec.describe TransactionsController, :type => :controller do
       debit_id: account1.id,
       credit_id: account2.id,
       time: Time.now,
-      amount: "9.99"
+      credit_amount: "9.99",
+      debit_amount: "9.99"
     }
   }
 
@@ -47,7 +48,8 @@ RSpec.describe TransactionsController, :type => :controller do
     {
       debit_id: account1.id,
       credit_id: account2.id,
-      amount: "9.99"
+      credit_amount: "9.99",
+      debit_amount: "9.99"
     }
   }
 
@@ -55,7 +57,8 @@ RSpec.describe TransactionsController, :type => :controller do
     {
       user_id: 1,
       debit_id: nil,
-      amount: "9.99"
+      credit_amount: "9.99",
+      debit_amount: "9.99"
     }
   }
 
@@ -131,14 +134,14 @@ RSpec.describe TransactionsController, :type => :controller do
   describe "PUT update" do
     describe "with valid params" do
       let(:new_attributes) {
-        {amount: 1.00}
+        {credit_amount: 1.00}
       }
 
       it "updates the requested transaction" do
         transaction = Transaction.create! valid_attributes
         put :update, {:id => transaction.to_param, :transaction => new_attributes}, valid_session
         transaction.reload
-        expect(transaction.amount).to eq(1.00)
+        expect(transaction.credit_amount).to eq(1.00)
       end
 
       it "assigns the requested transaction as @transaction" do

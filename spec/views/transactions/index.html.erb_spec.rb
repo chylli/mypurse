@@ -18,6 +18,7 @@ RSpec.describe "transactions/index", :type => :view do
     assert_select "tr>td", :text => 1.to_s, :count => 2
     assert_select "tr>td", :text => @account1.id.to_s, :count => 2
     assert_select "tr>td", :text => @account2.id.to_s, :count => 2
-    assert_select "tr>td", :text => "9.99".to_s, :count => 2
+    assert_select "tr>td", :text => "5.0".to_s, :count => 2
+    assert_select "tr>td", :text => "4.0".to_s, :count => 2
   end
 end

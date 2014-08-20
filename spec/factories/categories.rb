@@ -4,6 +4,7 @@ FactoryGirl.define do
   factory :category1, class: Category do
     name
     user_id 1
+    id 1
     description "MyString"
     type 'PropertyCategory'
     default_account_type "CashAccount"
@@ -12,6 +13,7 @@ FactoryGirl.define do
   factory :category2, class: Category do
     name
     user_id 1
+    id 2
     description "MyString"
     type 'PropertyCategory'
     default_account_type "CashAccount"

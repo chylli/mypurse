@@ -10,7 +10,8 @@ RSpec.describe "transactions/new", :type => :view do
       :user_id => user.id,
       :debit_id => @account1.id,
       :credit_id => @account2.id,
-      :amount => "9.99"
+      :credit_amount => "9.99",
+      :debit_amount => "9.99"
     ))
   end
 
@@ -23,7 +24,9 @@ RSpec.describe "transactions/new", :type => :view do
 
       assert_select "select#transaction_credit_id[name=?]", "transaction[credit_id]"
 
-      assert_select "input#transaction_amount[name=?]", "transaction[amount]"
+      assert_select "input#transaction_debit_amount[name=?]", "transaction[debit_amount]"
+
+      assert_select "input#transaction_credit_amount[name=?]", "transaction[credit_amount]"
     end
   end
 end

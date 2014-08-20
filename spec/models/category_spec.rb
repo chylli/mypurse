@@ -27,4 +27,15 @@ RSpec.describe Category, :type => :model do
     user = create(:user1)
     expect(Category.arrange_as_array({order: 'name'},user.property_categories.arrange({order: 'name'})).map(&:name)).to eq(["Property Center", "Bank Center", "Demand Deposit", "Cash"])
   end
+
+  it 'should return sum of the account balances' do
+    category1 = create(:category1)
+    currency1 = create(:currency1)
+    currency2 = create(:currency2)
+    account1 = create(:account1, currency_id: currency1.id, init_balance: 20)
+    account2 = create(:account2, currency_id: currency2.id, init_balance: 20)
+    category1.reload
+    # account1.balance * currency1.exchange_rate + account2.balance * currency2.exchange_rate
+    expect(category1.sum_balance).to eq(60)
+  end
 end

@@ -39,6 +39,11 @@ class Category < ActiveRecord::Base
     "#{'-' * depth} #{name}"
   end
 
+  def sum_balance
+    sum_result = accounts.joins('left join currencies on accounts.currency_id = currencies.id').select("sum(accounts.balance * currencies.exchange_rate)").group('category_id').take
+    sum_result ? sum_result['sum'] : 0.00
+  end
+
   #def possible_parents
   #  parents = Category.arrange_as_array(:order => 'name')
   #  return new_record? ? parents : parents - subtree

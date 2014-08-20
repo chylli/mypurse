@@ -1,7 +1,8 @@
 class Transaction < ActiveRecord::Base
   validates :debit_id, presence: true  
   validates :credit_id, presence: true  
-  validates :amount, presence: true  
+  validates :credit_amount, presence: true  
+  validates :debit_amount, presence: true  
   validates :user_id, presence: true
   validates :time, presence: true
   belongs_to :user

@@ -16,12 +16,16 @@
     %br/
     = collection_select :transaction, :debit_id, @user.accounts, :id, :name
   .field
+    = f.label :debit_amount
+    %br/
+    = f.text_field :debit_amount
+  .field
     = f.label :credit_id
     %br/
     = collection_select :transaction, :credit_id, @user.accounts, :id, :name
   .field
-    = f.label :amount
+    = f.label :credit_amount
     %br/
-    = f.text_field :amount
+    = f.text_field :credit_amount
   .actions
     = f.submit value: 'Submit'

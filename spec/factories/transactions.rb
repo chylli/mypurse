@@ -5,7 +5,8 @@ FactoryGirl.define do
     user_id 1
     debit_id 1
     credit_id 2
-    amount "9.99"
+    debit_amount 5
+    credit_amount 4
     time Time.now
   end
 
@@ -13,7 +14,8 @@ FactoryGirl.define do
     user_id 1
     debit_id 1
     credit_id 2
-    amount "9.99"
+    debit_amount 5
+    credit_amount 4
     time Time.now
   end
 

@@ -22,7 +22,8 @@ RSpec.describe "transactions/edit", :type => :view do
 
       assert_select "select#transaction_credit_id[name=?]", "transaction[credit_id]"
 
-      assert_select "input#transaction_amount[name=?]", "transaction[amount]"
+      assert_select "input#transaction_credit_amount[name=?]", "transaction[credit_amount]"
+      assert_select "input#transaction_debit_amount[name=?]", "transaction[debit_amount]"
     end
   end
 end
