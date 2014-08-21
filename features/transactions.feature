@@ -28,7 +28,6 @@ Feature: Transaction flow
     When I click the link 'testcash1'
     Then it will display the button 'Submit' 
 
-  @wip
   Scenario: create transaction between two different currency accounts
     Given I signed in with a valid user
     When I visit the configure accounts page
