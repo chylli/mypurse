@@ -16,4 +16,4 @@
 //= require highcharts
 //= require angular
 //= require angular-ui-bootstrap
-//= require_tree .
+//= require alert
