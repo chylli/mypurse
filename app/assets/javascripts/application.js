@@ -16,4 +16,5 @@
 //= require highcharts
 //= require angular
 //= require angular-ui-bootstrap
+//= require underscore
 //= require alert
