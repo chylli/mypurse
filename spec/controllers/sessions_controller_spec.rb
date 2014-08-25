@@ -15,15 +15,18 @@ RSpec.describe SessionsController, :type => :controller do
   describe "POST 'create'" do
     it "returns http success" do
       post 'create', valid_attributes
-      expect(response).to redirect_to(reports_property_path)
+      expect(response).to be_success
       expect(session[:user_id]).to eq(user.id)
     end
   end
 
   describe "DELETE 'destroy'" do
     it "returns http success" do
-      delete 'destroy'
+      session[:user_id] = user.id
+      delete 'destroy',valid_attributes
       expect(response).to be_success
+      expect(assigns[:user]).to be_nil
+      expect(assigns[:logouted_user].id).to eq(user.id)
     end
   end
 

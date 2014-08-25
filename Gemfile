@@ -73,3 +73,4 @@ group :production do
 end
 
 gem 'http_accept_language'
+gem 'angular_rails_csrf'

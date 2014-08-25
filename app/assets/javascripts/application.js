@@ -17,4 +17,4 @@
 //= require angular
 //= require angular-ui-bootstrap
 //= require underscore
-//= require alert
+//= require_tree .

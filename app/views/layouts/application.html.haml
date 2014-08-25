@@ -36,5 +36,7 @@
     .container-fluid
       - if flash[:alert]
         %h2#notice.flash.fade-in= flash[:alert]
-      = render "layouts/#{controller_name}"
+
+      %div{"ng-app" => "myPurse"}
+        = render "layouts/#{controller_name}"
     / /.container-fluid

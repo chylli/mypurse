@@ -10,14 +10,18 @@ class SessionsController < ApplicationController
     #logger.warn "password: #{params[:password]}"
     if user and user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to reports_property_path, alert: "Welcome to mypurse, #{user.name}"
+      render json: {status: :success}
     else
-      redirect_to signin_url, flash: {signin_error: t("Invalid email/password combination")}
+      #render json: {signin_error: t("Invalid email/password combination")}
+      render json: {status: :error, signin_error: t("Invalid email/password combination")}
+    #  redirect_to signin_url, flash: {signin_error: t("Invalid email/password combination")}
     end
   end
 
   def destroy
     session.delete :user_id
+    @logouted_user = @user
     @user = nil
+
   end
 end
