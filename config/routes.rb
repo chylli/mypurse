@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  # routes template/* to a template controller
+  get '/template/*path' => 'templates#show'
+
   get 'reports/property'
 
   get 'reports/earning'
