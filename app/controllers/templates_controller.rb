@@ -4,7 +4,7 @@ class TemplatesController < ApplicationController
     path = params[:path]
     #render file: "templates/#{path}", handler: [:haml], layout: false
     if path
-      render "templates/#{path}"
+      render "templates/#{path}", layout: false
     else
       render "templates/index", layout: false
     end

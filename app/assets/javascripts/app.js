@@ -4,7 +4,11 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.AppController',
-]).
-config(['$routeProvider', function($routeProvider) {
-  $routeProvider.otherwise({redirectTo: '/view1'});
+]).config(['$routeProvider', function($routeProvider) {
+  $routeProvider
+		.when('/signin',{
+				templateUrl: 'template/signin',
+				controller: 'SigninController',
+		})
+		.otherwise({redirectTo: '/signin'});
 }]);

@@ -8,6 +8,7 @@
   = stylesheet_link_tag    "application"
   = javascript_include_tag "application"
   = csrf_meta_tags
-%body{ng_controller: "AppController"}
+%body{'ng-controller' => "AppController"}
+  %a{href:"/#/signin"} hello
+  %div{'ng-view' => true}
 
-  hello
