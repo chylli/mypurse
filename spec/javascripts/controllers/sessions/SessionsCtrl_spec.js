@@ -4,7 +4,7 @@ describe('myPurse controllers', function() {
     var scope, ctrl, $httpBackend;
 
     // Load our app module definition before each test.
-    beforeEach(module('myPurse'));
+    beforeEach(module('myApp.SessionsController'));
 
     // The injector ignores leading and trailing underscores here (i.e. _$httpBackend_).
     // This allows us to inject a service but then attach it to a variable
