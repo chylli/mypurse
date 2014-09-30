@@ -20,6 +20,7 @@ Then(/^it will not display '(.*)'$/) do |content|
 end
 
 When(/^I visit (.*)$/) do |page_name|
+  puts path_to(page_name)
   visit path_to(page_name)
 end
 

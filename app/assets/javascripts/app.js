@@ -4,11 +4,12 @@
 angular.module('myApp', [
   'ngRoute',
   'myApp.AppController',
+  'myApp.SessionsController'
 ]).config(['$routeProvider', function($routeProvider) {
   $routeProvider
 		.when('/signin',{
 				templateUrl: 'template/signin',
-				controller: 'SigninController',
+				controller: 'SessionsController',
 		})
 		.otherwise({redirectTo: '/signin'});
 }]);

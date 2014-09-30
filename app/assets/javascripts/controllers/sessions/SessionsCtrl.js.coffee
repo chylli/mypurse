@@ -1,4 +1,4 @@
-@myPurse = angular.module('myPurse', []);
+@module = angular.module('myApp.SessionsController', []);
 @SessionsCtrl = ($scope, $http) -> 
     signin_callback = (data)->
       if data.status == 'success'
@@ -10,5 +10,5 @@
       $http.post('/signin',{'email': $scope.email, 'password': $scope.password}).success(signin_callback)
 
 
-@myPurse.controller('SessionsCtrl', @SessionsCtrl);
+@module.controller('SessionsController', @SessionsCtrl);
 

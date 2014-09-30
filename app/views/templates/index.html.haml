@@ -9,6 +9,36 @@
   = javascript_include_tag "application"
   = csrf_meta_tags
 %body{'ng-controller' => "AppController"}
-  %a{href:"/#/signin"} hello
-  %div{'ng-view' => true}
+  .navbar.navbar-inverse.navbar-fixed-top{:role => "navigation"}
+    .container-fluid
+      .navbar-header
+        %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+          %span.sr-only Toggle navigation
+          %span.icon-bar
+          %span.icon-bar
+          %span.icon-bar
+        = link_to "Mypurse", root_path, class: "navbar-brand"
+      .collapse.navbar-collapse
+        %ul.nav.navbar-nav
+          %li{ :class => controller_name == 'transactions' ? "active" : "" }
+            = link_to t("Accounting"), transactions_path
+          %li{ :class => controller_name == 'reports' ? "active" : "" }
+            = link_to t("Reports"), reports_property_path
+          %li{ :class => controller_name == 'configure' ? "active" : "" }
+            = link_to t("Configure"), configure_language_path
+          %li= link_to t("About"), "#about"
+          %li= link_to t("Contact"), "#contact"
+        %ul.nav.navbar-nav.navbar-right
+          - if @user
+            %li= link_to @user.name, user_path
+            %li= link_to t("Signout"), signout_path, method: :delete
+          - else
+            %li= link_to t("Signin"), '#/signin'
+            %li= link_to t("Signup"), signup_path
+      / /.nav-collapse
+  .container-fluid
+    - if flash[:alert]
+      %h2#notice.flash.fade-in= flash[:alert]
 
+    %div{'ng-view' => true}
+      /= render "layouts/#{controller_name}"

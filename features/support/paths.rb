@@ -5,6 +5,8 @@ module NavigationHelpers
     when /the homepage/
       root_path   
     # Add more page name => path mappings here
+    when /the signin page/
+      '/#/signin'
     else
       if path = match_rails_path_for(page_name) 
         path
