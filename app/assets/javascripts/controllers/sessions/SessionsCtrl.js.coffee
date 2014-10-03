@@ -1,13 +1,16 @@
-@module = angular.module('myApp.SessionsController', []);
-@SessionsCtrl = ($scope, $http) -> 
-    signin_callback = (data)->
-      if data.status == 'success'
-        window.location = '/';
-      else
-        $scope.signin_error = data.signin_error
+#TODO use then to process the success
+@module = angular.module('myApp.SessionsController', ['myApp.SessionsService']);
+@SessionsCtrl = ($scope, $rootScope, AuthService, Session, AUTH_EVENTS, $window) -> 
+    handle_success = ->
+      #set userName
+      $scope.global.currentUser = Session.user
+      $window.location.reload()
+      
+    handle_failed = (response) ->
+        $scope.signin_error = response.data.signin_error
 
-    $scope.signin = ->
-      $http.post('/signin',{'email': $scope.email, 'password': $scope.password}).success(signin_callback)
+    $scope.signin = (credentials)->
+      AuthService.signin(credentials).then(handle_success,handle_failed);
 
 
 @module.controller('SessionsController', @SessionsCtrl);

@@ -13,7 +13,10 @@ class ApplicationController < ActionController::Base
 
   def authorize
     unless @user
-      redirect_to signin_url, notice: "Please sign in"
+      respond_to do |format|
+        format.html { redirect_to signin_url, notice: "Please sign in" }
+        format.json { render json: {}, status: :unauthorized }
+      end
     end
   end
 

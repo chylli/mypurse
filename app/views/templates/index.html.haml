@@ -29,16 +29,23 @@
           %li= link_to t("About"), "#about"
           %li= link_to t("Contact"), "#contact"
         %ul.nav.navbar-nav.navbar-right
-          - if @user
-            %li= link_to @user.name, user_path
-            %li= link_to t("Signout"), signout_path, method: :delete
-          - else
-            %li= link_to t("Signin"), '#/signin'
-            %li= link_to t("Signup"), signup_path
+          %li{'ng-if' => 'global.currentUser.name'}= link_to '{{global.currentUser.name}}', user_path
+          %li{'ng-if' => 'global.currentUser.name'}= link_to t("Signout"), signout_path, method: :delete
+          %li{'ng-if' => '!global.currentUser.name'}= link_to t("Signin"), '#/signin'
+          %li{'ng-if' => '!global.currentUser.name'}= link_to t("Signup"), signup_path
       / /.nav-collapse
   .container-fluid
     - if flash[:alert]
       %h2#notice.flash.fade-in= flash[:alert]
+    %div{:id => "sign", 'ng-if' => '!global.currentUser.name', 'ng-controller' => "SessionsController"}
+      %form{class: "form-sign"}
+        %h2.form-sign-heading= t "Please Sign In"
+        %h3#error_explanation {{signin_error}}
+        = email_field_tag :email, params[:email], class: "form-control", placeholder: t("Email address"), required: "true", autofocus: "true", 'ng-model' => "credentials.email"
+        = password_field_tag :password, params[:password], class: "form-control", placeholder: t("password"), required: "true", 'ng-model' => "credentials.password"
+        %button{class: "btn btn-lg btn-primary btn-block", 'ng-click' => 'signin(credentials)'}
+          = t('Signin')
+
 
     %div{'ng-view' => true}
       /= render "layouts/#{controller_name}"

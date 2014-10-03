@@ -57,7 +57,7 @@ group :test do
 end
 
 group :test, :development do
-  gem 'jasmine'
+  gem 'jasmine-rails'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'shoulda-matchers', '~> 2.6.1'
   gem 'factory_girl_rails', '~> 4.4.1'
