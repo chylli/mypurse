@@ -15,7 +15,12 @@
         .post('/signin', credentials)
         .then((res) -> 
           Session.create(res.data)
-        );
+        )
+    signout: () ->
+      $http.delete('/signout')
+      .then(()->
+        Session.destroy()
+      )
     ,
     isAuthenticated: -> 
       !!Session.user;

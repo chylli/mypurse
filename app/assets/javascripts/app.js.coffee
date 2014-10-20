@@ -17,7 +17,7 @@ angular.module('myApp',[
     .when('/reports',{
 				templateUrl: 'template/reports',
 				controller: 'ReportsController'
-      })
+    })
     .otherwise({redirectTo: '/reports'})
 ]).factory('AuthInterceptor', ($rootScope, $q, AUTH_EVENTS) ->
   return {

@@ -22,10 +22,17 @@ describe('myApp services', ->
     it('should set Session.user when signin', ->
       $httpBackend.expectPOST('/signin')
         .respond({name: 'user1'})
-      AuthService.signin();
-      $httpBackend.flush();
-      expect(Session.user.name).toEqual("user1");
-      expect(AuthService.isAuthenticated()).toBe(true);
+      AuthService.signin()
+      $httpBackend.flush()
+      expect(Session.user.name).toEqual("user1")
+      expect(AuthService.isAuthenticated()).toBe(true)
+    )
+
+    it('should send post when signout', ->
+      $httpBackend.expectDELETE('/signout')
+        .respond({})
+      AuthService.signout()
+      $httpBackend.flush()
     )
   )
 )

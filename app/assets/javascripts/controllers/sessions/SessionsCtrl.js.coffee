@@ -12,6 +12,8 @@
     $scope.signin = (credentials)->
       AuthService.signin(credentials).then(handle_success,handle_failed);
 
+    $scope.signout = ()->
+      AuthService.signout().then(()->$window.location.reload())
 
 @module.controller('SessionsController', @SessionsCtrl);
 
