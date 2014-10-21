@@ -19,7 +19,7 @@ angular.module('myApp',[
 				controller: 'ReportsController'
     })
     .otherwise({redirectTo: '/reports'})
-]).factory('AuthInterceptor', ($rootScope, $q, AUTH_EVENTS) ->
+]).factory('AuthInterceptor', ['$rootScope', '$q', 'AUTH_EVENTS', ($rootScope, $q, AUTH_EVENTS) ->
   return {
     responseError: (response)->
       if response.status is 401 
@@ -35,13 +35,13 @@ angular.module('myApp',[
                               response);
       
       return $q.reject(response);
-  };
-).config(($httpProvider) ->
+  }
+]).config(['$httpProvider', ($httpProvider) ->
     $httpProvider.interceptors.push(['$injector', ($injector) -> 
       $injector.get('AuthInterceptor')
   ])
-)
-.factory('initPage',($rootScope,AUTH_EVENTS,AuthService,User,Session)->
+])
+.factory('initPage',['$rootScope','AUTH_EVENTS','AuthService','User','Session', ($rootScope,AUTH_EVENTS,AuthService,User,Session)->
   {initPage: ->
     # setup currentUser
     currentUser = User.get()
@@ -54,6 +54,6 @@ angular.module('myApp',[
         $rootScope.$broadcast(AUTH_EVENTS.NotAuthenticated)
     )
   }
-).run((initPage)->
+]).run(['initPage', (initPage)->
   initPage.initPage()
-)
+])

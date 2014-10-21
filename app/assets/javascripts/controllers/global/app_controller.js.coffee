@@ -5,4 +5,4 @@
   $scope.$on(AUTH_EVENTS.NotAuthenticated, ->
     $scope.global.currentUser = null
   )
-@module.controller('AppController',@controller)
+@module.controller('AppController',['$scope','User','AUTH_EVENTS','Session',@controller])

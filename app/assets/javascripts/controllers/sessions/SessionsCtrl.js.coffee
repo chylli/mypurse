@@ -1,6 +1,6 @@
 #TODO use then to process the success
 @module = angular.module('myApp.SessionsController', ['myApp.SessionsService']);
-@SessionsCtrl = ($scope, $rootScope, AuthService, Session, AUTH_EVENTS, $window) -> 
+@SessionsCtrl = ($scope, AuthService, Session, AUTH_EVENTS, $window) -> 
     handle_success = ->
       #set userName
       $scope.global.currentUser = Session.user
@@ -15,5 +15,5 @@
     $scope.signout = ()->
       AuthService.signout().then(()->$window.location.reload())
 
-@module.controller('SessionsController', @SessionsCtrl);
+@module.controller('SessionsController', ['$scope','AuthService','Session','AUTH_EVENTS','$window',@SessionsCtrl]);
 

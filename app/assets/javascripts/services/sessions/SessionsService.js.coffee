@@ -36,7 +36,7 @@ Session = (User)->
   @
 
 
-@module.factory('AuthService', @AuthService)
+@module.factory('AuthService', ['$http', 'Session', @AuthService])
   .constant('AUTH_EVENTS',AuthEvents)
-  .service('Session', Session);
+  .service('Session', ['User',Session]);
 
