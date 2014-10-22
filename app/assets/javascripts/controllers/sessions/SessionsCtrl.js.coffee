@@ -13,7 +13,7 @@
       AuthService.signin(credentials).then(handle_success,handle_failed);
 
     $scope.signout = ()->
-      AuthService.signout().then(()->$window.location.reload())
+      AuthService.signout().then(()->$scope.global.currentUser = null; )
 
 @module.controller('SessionsController', ['$scope','AuthService','Session','AUTH_EVENTS','$window',@SessionsCtrl]);
 

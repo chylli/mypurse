@@ -1,8 +1,5 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize
-  def new
-  end
-
 
   def create
     user = User.find_by(email: params[:email])
@@ -22,6 +19,6 @@ class SessionsController < ApplicationController
     session.delete :user_id
     @logouted_user = @user
     @user = nil
-
+    render json: {}
   end
 end

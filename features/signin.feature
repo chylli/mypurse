@@ -46,3 +46,9 @@ Feature: User Signin Flow
     And I click the '更新' button
     Then it will display 'About'
 
+  @wip
+  Scenario: username disappeared when signed out
+    When I signed in with a valid user
+    And I click the link 'Signout'
+    Then it will display 'Signin'
+  

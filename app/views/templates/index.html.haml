@@ -31,7 +31,7 @@
         %ul.nav.navbar-nav.navbar-right
           %li{'ng-if' => 'global.currentUser.name'}= link_to '{{global.currentUser.name}}', user_path
           %li{'ng-if' => 'global.currentUser.name', 'ng-controller' => "SessionsController"}
-            %a{href: '#', 'ng-click' => 'signout()'}= t('Signout')
+            %a{href: '', 'ng-click' => 'signout()'}= t('Signout')
           %li{'ng-if' => '!global.currentUser.name'}= link_to t("Signin"), '#/signin'
           %li{'ng-if' => '!global.currentUser.name'}= link_to t("Signup"), signup_path
       / /.nav-collapse
