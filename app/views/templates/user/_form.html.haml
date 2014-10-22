@@ -1,0 +1,24 @@
+%form{class: "form-sign"}
+  %h2.form-sign-heading= t('signup')
+  = text_field_tag :name, '', class: "form-control", placeholder: t("Name"), required: "true", autofocus: "true", 'ng-model' => 'user.name'
+  %ul
+    %li{'ng-repeat' => 'err in signup_error.name'}
+      {{err}}
+  = email_field_tag :email, '', class: "form-control", placeholder: t("Email address"), required: "true", autofocus: "true", 'ng-model' => "user.email"
+  %ul
+    %li{'ng-repeat' => 'err in signup_error.email'}
+      {{err}}
+  = password_field_tag :password, '', class: "form-control", placeholder: t("Password"), required: "true", 'ng-model' => "user.password"
+  %ul
+    %li{'ng-repeat' => 'err in signup_error.password'}
+      {{err}}
+  = password_field_tag :password_confirmation, '', class: "form-control", placeholder: t("Password Confirmation"), required: "true", 'ng-model' => "user.password_confirmation"
+  %ul
+    %li{'ng-repeat' => 'err in signup_error.password_confirmation'}
+      {{err}}
+  = select_tag :language, options_for_select((User.available_languages.map {|a| [a,a]}).unshift([t('Language'),''])), {class: "form-control", required: "true", 'ng-model' => 'user.language'}
+  %ul
+    %li{'ng-repeat' => 'err in signup_error.language'}
+      {{err}}
+  %button{class: "btn btn-lg btn-primary btn-block", 'ng-click' => 'signup(user)'}
+    = t('Signup')

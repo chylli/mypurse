@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   attr_reader :current_password
   validates :email, presence: true, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password, length: {within: 6..20, message: "should be 6 to 20 characters", on: :create}
-  validates :language, inclusion: {within: available_languages, allow_blank: true, allow_nil: true}
+  validates :language, presence: true, inclusion: {within: available_languages, allow_blank: false, allow_nil: false}
   has_secure_password
   has_many :categories, dependent: :destroy
   has_many :accounts, dependent: :destroy

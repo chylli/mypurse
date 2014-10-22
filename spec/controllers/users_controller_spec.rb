@@ -24,15 +24,15 @@ RSpec.describe UsersController, :type => :controller do
   # User. As you add validations to User, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {:name => 'name', :email => 'email@example.com', :password => 'password', :password_confirmation => 'password'}
+    {:name => 'name', :email => 'email@example.com', :password => 'password', :password_confirmation => 'password', language: 'en'}
   }
 
   let(:invalid_attributes) {
-    {:name => 'name', :email => 'email', :password => 'password', :password_confirmation => 'nopassword'}
+    {:name => 'name', :email => 'email', :password => 'password', :password_confirmation => 'nopassword', language: 'en'}
   }
 
   let(:user) {
-    User.create!(:name => 'name2', :email => 'email2@example.com', :password => 'password', :password_confirmation => 'password')
+    User.create!(:name => 'name2', :email => 'email2@example.com', :password => 'password', :password_confirmation => 'password',language: 'en')
   }
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -64,31 +64,33 @@ RSpec.describe UsersController, :type => :controller do
     describe "with valid params" do
       it "creates a new User" do
         expect {
-          post :create, {:user => valid_attributes}
+          post :create, {:user => valid_attributes, format: :json}
         }.to change(User, :count).by(1)
       end
 
       it "assigns a newly created user as @user" do
-        post :create, {:user => valid_attributes}, valid_session
+        post :create, {:user => valid_attributes, format: :json}, valid_session
         expect(assigns(:new_user)).to be_a(User)
         expect(assigns(:new_user)).to be_persisted
       end
 
-      it "redirects to the created user" do
-        post :create, {:user => valid_attributes}, valid_session
-        expect(response).to redirect_to(User.last)
+      it "set session[user_id]" do
+        post :create, {:user => valid_attributes, format: :json}, valid_session
+        expect(session[:user_id]).to eq(assigns[:new_user].id)
       end
     end
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved user as @user" do
-        post :create, {:user => invalid_attributes}, valid_session
+        post :create, {:user => invalid_attributes, format: :json}, valid_session
         expect(assigns(:new_user)).to be_a_new(User)
       end
 
-      it "re-renders the 'new' template" do
-        post :create, {:user => invalid_attributes}, valid_session
-        expect(response).to render_template("new")
+      it "set signup error" do
+        post :create, {:user => invalid_attributes, format: :json}, valid_session
+        errors = response_body
+        expect(response.status).to eq 422
+        expect(errors['email'][0]).to eq('is invalid')
       end
     end
   end

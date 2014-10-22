@@ -33,12 +33,12 @@
           %li{'ng-if' => 'AuthService.isAuthenticated()', 'ng-controller' => "SessionsController"}
             %a{href: '', 'ng-click' => 'signout()'}= t('Signout')
           %li{'ng-if' => '!AuthService.isAuthenticated()'}= link_to t("Signin"), '#/signin'
-          %li{'ng-if' => '!AuthService.isAuthenticated()'}= link_to t("Signup"), signup_path
+          %li{'ng-if' => '!AuthService.isAuthenticated()'}= link_to t("Signup"), '#/signup'
       / /.nav-collapse
   .container-fluid
     - if flash[:alert]
       %h2#notice.flash.fade-in= flash[:alert]
-    %div{:id => "sign", 'ng-if' => '!AuthService.isAuthenticated()', 'ng-controller' => "SessionsController"}
+    %div{:id => "sign", 'ng-if' => 'shouldShowSigninForm()', 'ng-controller' => "SessionsController"}
       %form{class: "form-sign"}
         %h2.form-sign-heading= t "Please Sign In"
         %h3#error_explanation {{signin_error}}

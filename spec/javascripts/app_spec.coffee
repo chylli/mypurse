@@ -4,7 +4,6 @@ describe('myApp run ', ->
   beforeEach(module('myApp'))
   beforeEach(inject((_initPage_,_$httpBackend_, _Session_, _$rootScope_,_AUTH_EVENTS_)->
     [initPage,$httpBackend,Session,$rootScope,AUTH_EVENTS] = [_initPage_, _$httpBackend_,_Session_, _$rootScope_,_AUTH_EVENTS_]
-    console.log($httpBackend)
   ))
 
   it('should setup Session',->

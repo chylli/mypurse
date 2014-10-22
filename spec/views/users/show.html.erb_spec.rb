@@ -6,7 +6,8 @@ RSpec.describe "users/show", :type => :view do
       :name => "Name",
       :email => "email@example.com",
       :password => "password",
-      :password_confirmation => 'password'
+      :password_confirmation => 'password',
+      :language => 'en'
     ))
   end
 

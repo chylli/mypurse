@@ -6,17 +6,22 @@ angular.module('myApp',[
   'myApp.AppController',
   'myApp.SessionsController',
   'myApp.ReportsController',
+  'myApp.UserController',
   'userServices'
 #  'myApp.SignupController'
 ]).config(['$routeProvider', ($routeProvider) ->
   $routeProvider
     .when('/signin',{
-				templateUrl: 'template/signin',
-				controller: 'SessionsController',
+      templateUrl: 'template/signin',
+      controller: 'SessionsController',
     })
     .when('/reports',{
-				templateUrl: 'template/reports',
-				controller: 'ReportsController'
+      templateUrl: 'template/reports',
+      controller: 'ReportsController'
+    })
+    .when('/signup',{
+      templateUrl: 'template/user/new',
+      controller: 'UserController'
     })
     .otherwise({redirectTo: '/reports'})
 ]).factory('AuthInterceptor', ['$rootScope', '$q', 'AUTH_EVENTS', ($rootScope, $q, AUTH_EVENTS) ->
@@ -38,7 +43,7 @@ angular.module('myApp',[
     # setup Session.user
     Session.create()
     $rootScope.$on('$locationChangeStart',(event, next) ->
-      unless AuthService.isAuthenticated()
+      unless AuthService.isAuthenticated() or next.match(/signup|signin/)
         event.preventDefault();
     )
     $rootScope.$on(AUTH_EVENTS.NotAuthenticated,()->

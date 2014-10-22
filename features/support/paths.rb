@@ -7,6 +7,8 @@ module NavigationHelpers
     # Add more page name => path mappings here
     when /the signin page/
       '/#/signin'
+    when /the signup page/
+      '/#/signup'
     else
       if path = match_rails_path_for(page_name) 
         path

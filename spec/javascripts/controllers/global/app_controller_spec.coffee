@@ -1,14 +1,15 @@
 describe('my App controllers', ->
   describe('AppController', ->
-    [scope, ctrl, Session, AuthService] = []
+    [scope, ctrl, Session, AuthService, $location] = []
 
     beforeEach(module('myApp.AppController'))
 
-    beforeEach(inject(($rootScope, $controller, _Session_, _AuthService_)->
+    beforeEach(inject(($rootScope, $controller, _Session_, _AuthService_, _$location_)->
       scope = $rootScope.$new()
       ctrl = $controller('AppController', {$scope: scope})
       Session = _Session_
       AuthService = _AuthService_
+      $location = _$location_
     ))
 
     it('should set session and authservice', ->
@@ -17,5 +18,15 @@ describe('my App controllers', ->
 
     )
 
+    describe('function shouldShowSigninForm',->
+      it('should return true', ->
+        oldUrl = $location.url
+        $location.url = () -> '/signup'
+        expect(scope.shouldShowSigninForm()).toBe(false)
+        $location.url = oldUrl
+      )
+
+  )
+ 
   )
 )
