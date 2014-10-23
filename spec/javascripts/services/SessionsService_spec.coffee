@@ -31,11 +31,13 @@ describe('myApp services', ->
       expect(AuthService.isAuthenticated()).toBe(true)
     )
 
-    it('should send post when signout', ->
+    it('should send post and destroy session when signout', ->
+      Session.user = {name: 'user1'}
       $httpBackend.expectDELETE('/signout')
         .respond({})
       AuthService.signout()
       $httpBackend.flush()
+      expect(Session.user).toBeNull()
     )
   )
 )

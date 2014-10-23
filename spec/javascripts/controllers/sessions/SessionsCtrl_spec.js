@@ -16,7 +16,7 @@ describe('myPurse controllers', function() {
           respond(406, {signin_error: "has an error"});
 
       scope = $rootScope.$new();
-      ctrl = $controller('SessionsCtrl', {$scope: scope});
+      ctrl = $controller('SessionsController', {$scope: scope});
     }));
 
     it('should create erroe message fetched from xhr', function() {
