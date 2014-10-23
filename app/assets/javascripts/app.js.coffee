@@ -22,16 +22,8 @@ angular.module('myApp',[
 ]).factory('AuthInterceptor', ['$rootScope', '$q', 'AUTH_EVENTS', ($rootScope, $q, AUTH_EVENTS) ->
   return {
     responseError: (response)->
-      if response.status is 401 
+      if response.status is 401
         $rootScope.$broadcast(AUTH_EVENTS.NotAuthenticated,
-                              response);
-      
-      if response.status is 403
-        $rootScope.$broadcast(AUTH_EVENTS.NotAuthorized,
-                              response);
-      
-      if response.status is 419 || response.status is 440 
-        $rootScope.$broadcast(AUTH_EVENTS.SessionTimeout,
                               response);
       
       return $q.reject(response);
@@ -43,15 +35,14 @@ angular.module('myApp',[
 ])
 .factory('initPage',['$rootScope','AUTH_EVENTS','AuthService','User','Session', ($rootScope,AUTH_EVENTS,AuthService,User,Session)->
   {initPage: ->
-    # setup currentUser
-    currentUser = User.get()
-    $rootScope.global = {currentUser: currentUser}
     # setup Session.user
-    Session.create(currentUser)
+    Session.create()
     $rootScope.$on('$locationChangeStart',(event, next) ->
       unless AuthService.isAuthenticated()
         event.preventDefault();
-        $rootScope.$broadcast(AUTH_EVENTS.NotAuthenticated)
+    )
+    $rootScope.$on(AUTH_EVENTS.NotAuthenticated,()->
+      Session.destroy()
     )
   }
 ]).run(['initPage', (initPage)->

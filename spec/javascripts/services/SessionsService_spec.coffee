@@ -14,14 +14,17 @@ describe('myApp services', ->
       Session = _Session_
 		))
     it('should defined AuthEvents', inject((AUTH_EVENTS)->
-      expect(AUTH_EVENTS.SigninSuccess).toEqual('auth-signin-success')
+      expect(AUTH_EVENTS.NotAuthenticated).toEqual('auth-not-authenticated')
     ))
 
 
       
     it('should set Session.user when signin', ->
       $httpBackend.expectPOST('/signin')
+        .respond({})
+      $httpBackend.expectGET('/user.json')
         .respond({name: 'user1'})
+
       AuthService.signin()
       $httpBackend.flush()
       expect(Session.user.name).toEqual("user1")

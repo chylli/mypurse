@@ -6,12 +6,11 @@ describe('myApp run ', ->
     [initPage,$httpBackend,Session,$rootScope,AUTH_EVENTS] = [_initPage_, _$httpBackend_,_Session_, _$rootScope_,_AUTH_EVENTS_]
   ))
 
-  it('should setup currentUser',->
+  it('should setup Session',->
     $httpBackend.expectGET('/user.json').respond({name: 'user1'})
     #neednot call it again because when init module('myApp'), the code is alread run
     #initPage.initPage()
-    $httpBackend.flush();
-    expect($rootScope.global.currentUser.name).toEqual('user1')
+    $httpBackend.flush()
     expect(Session.user.name).toEqual('user1')
   )
 

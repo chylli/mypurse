@@ -1,35 +1,21 @@
 describe('my App controllers', ->
   describe('AppController', ->
-    [scope, ctrl, $httpBackend, resHandler, $rootScope, AUTH_EVENTS] = [null,null,null,null,null,null]
+    [scope, ctrl, Session, AuthService] = []
 
     beforeEach(module('myApp.AppController'))
 
-    beforeEach(inject((_$httpBackend_,_$rootScope_, $controller,_AUTH_EVENTS_)->
-      $httpBackend = _$httpBackend_
-      $rootScope = _$rootScope_
-      AUTH_EVENTS = _AUTH_EVENTS_
-      $rootScope.global = {currentUser: {name: 'testuser'}}
+    beforeEach(inject(($rootScope, $controller, _Session_, _AuthService_)->
       scope = $rootScope.$new()
       ctrl = $controller('AppController', {$scope: scope})
+      Session = _Session_
+      AuthService = _AuthService_
     ))
 
-    it('should set current user to null if app broadcast notauthenticated', ->
-      $rootScope.$broadcast(AUTH_EVENTS.NotAuthenticated)
-      expect($rootScope.global.currentUser).toBe(null)
+    it('should set session and authservice', ->
+      expect(scope.Session).toBe(Session)
+      expect(scope.AuthService).toBe(AuthService)
+
     )
 
-    
-#
-#    it('should assign currentUser after init', ->
-#      $httpBackend.flush()
-#      expect(scope.global.currentUser.name).toEqual("testuser")
-#    )
-#
-#    it('should unset currentUser when recieved AUTH_EVENTS.NotAuthenticated event', ->
-#      $httpBackend.flush()
-#      expect(scope.global.currentUser.name).toEqual('testuser')
-#      $rootScope.$broadcast(AUTH_EVENTS.NotAuthenticated)
-#      expect(scope.global.currentUser).toBe(null)
-#    )
   )
 )

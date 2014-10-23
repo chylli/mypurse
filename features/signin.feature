@@ -52,3 +52,4 @@ Feature: User Signin Flow
     And I click the link 'Signout'
     Then it will display 'Signin'
   
+  #TODO test the scenario: not logged in, and click a link, then the location will not changed

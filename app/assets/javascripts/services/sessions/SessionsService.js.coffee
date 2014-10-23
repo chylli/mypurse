@@ -1,11 +1,7 @@
 @module = angular.module('myApp.SessionsService',['userServices']);
+# please refer to http://www.tuicool.com/articles/mIFzam
 @AuthEvents = {
-  SigninSuccess: 'auth-signin-success',
-  SigninFailed: 'auth-signin-failed',
-  SignoutSuccess: 'auth-signout-success',
-  SessionTimeout: 'auth-session-timeout',
   NotAuthenticated: 'auth-not-authenticated',
-  NotAuthorized: 'auth-not-authorized'
 };
 
 @AuthService = ($http, Session) ->
@@ -14,7 +10,7 @@
       $http
         .post('/signin', credentials)
         .then((res) -> 
-          Session.create(res.data)
+          Session.create()
         )
     signout: () ->
       $http.delete('/signout')
