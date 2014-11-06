@@ -23,6 +23,9 @@ angular.module('myApp',[
       templateUrl: 'template/user/new',
       controller: 'UserController'
     })
+    .when('/contact',{
+      templateUrl: 'template/contact'
+    })
     .otherwise({redirectTo: '/reports'})
 ]).factory('AuthInterceptor', ['$rootScope', '$q', 'AUTH_EVENTS', ($rootScope, $q, AUTH_EVENTS) ->
   return {
