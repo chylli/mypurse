@@ -26,7 +26,7 @@
             = link_to t("Reports"), reports_property_path
           %li{ :class => controller_name == 'configure' ? "active" : "" }
             = link_to t("Configure"), configure_language_path
-          %li= link_to t("About"), "#about"
+          %li= link_to t("About"), "#/about"
           %li= link_to t("Contact"), "#/contact"
         %ul.nav.navbar-nav.navbar-right
           %li{'ng-if' => 'AuthService.isAuthenticated()'}= link_to '{{Session.user.name}}', user_path
